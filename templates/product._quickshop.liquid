@@ -1,0 +1,48 @@
+{% layout none %}
+
+{% capture to_hash %}
+  {{ shop.money_format | strip_html }}
+  {{ settings | json }}
+  {{ 'product.buttons.add_to_cart' | t }}
+  {{ 'product.buttons.sold_out' | t  }}
+  {{ product | json }}
+{% endcapture %}
+{% assign to_hash = to_hash | replace: ' ', '' | sha256 %}
+
+{% assign hover_zoom = 'disabled' %}
+{% if settings.quickshop_enable_hover_zoom %}
+  {% assign hover_zoom = 'replace' %}
+{% endif %}
+
+<template data-options>
+  {
+    "hash": {{ to_hash | json }}
+  }
+</template>
+
+<template data-data>
+  {
+    "product": {{ product | json }},
+    "settings": {
+      "money_format": {{ shop.money_format | strip_html | json }},
+      "thumbnail_position": {{ settings.gallery_thumbnail_position | json }},
+      "hover_zoom": {{ hover_zoom | json }},
+      "click_to_zoom": "disabled",
+      "swatches_enable": {{ settings.swatches_enable | json }}
+    },
+    "context": {
+      "product_available": {{ 'product.buttons.add_to_cart' | t | json }},
+      "product_unavailable": {{ 'product.buttons.sold_out' | t | json }}
+    }
+  }
+</template>
+
+<template data-html="content">
+  {%-
+    include 'product',
+    layout: false,
+    is_product_modal: true,
+    click_to_zoom: 'disabled',
+    hover_zoom: hover_zoom,
+  -%}
+</template>

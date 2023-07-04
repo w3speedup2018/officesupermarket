@@ -1,0 +1,52 @@
+<div class="site-page" data-template-page>
+  <header class="page-masthead">
+    <h1 class="page-title">
+      {{ page.title }}
+    </h1>
+  </header>
+
+   {% if page.content != blank %}
+    <div class="page-content rte">
+      {{ page.content }}
+    </div>
+  {% endif %}
+  
+  <section class="blog--container">
+    <div class="blogposts--inner-all">
+    {% for link in linklists.blogs.links %}
+        {% comment %}
+      link.url|split: "/blogs/"
+      {% endcomment %}
+      {%  assign handle = link.url| remove: '/blogs/' %}
+       {% for article in blogs[handle].articles limit:1 %}
+          {%  assign articleImage = article.image %}
+      {% endfor %}
+      
+      <div class="article--excerpt-wrapper">
+        <article class="article-list-item">
+          <a class="article--excerpt-image" href="{{ link.url }}">
+            {%
+              include 'rimg',
+              img: articleImage,
+              lazy: false,
+              canvas: false,
+              crop: 'center',
+              size: '326x250'
+            %}
+          </a>
+          <div class="article--excerpt-content">
+            <h2 class="article--excerpt-title">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </h2>
+            <div class="article--excerpt-text">
+              <a class="article--excerpt-readmore button-primary" href="{{ link.url }}" aria-label="View All {{ link.title }} blogs">View All</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    {% endfor %}
+    </div>
+</section>
+
+ 
+</div>

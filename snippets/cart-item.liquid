@@ -1,0 +1,163 @@
+{% assign compare_at_price = 0 %}
+
+{% for variant in item.product.variants %}
+  {% if variant.id == item.variant.id and variant.compare_at_price > item.price %}
+    {% assign compare_at_price = variant.compare_at_price %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{%- assign item_has_discounts = false -%}
+{%- if item.line_level_discount_allocations.size > 0 -%}
+  {%- assign item_has_discounts = true -%}
+{%- endif -%}
+
+<li
+  class="cart-item"
+  data-cartitem
+  data-cartitem-id="{{ item.variant_id }}"
+  data-cartitem-key="{{ item.key }}"
+  data-cartitem-price="{{ item.price }}">
+  <figure class="cart-item--image-wrapper">
+    <a href="{{ item.url }}">
+      {% if item.image %}
+        {%
+          include 'rimg',
+          img: item.image,
+          alt: item.title,
+          size: '120x'
+        %}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
+      {% endif %}
+    </a>
+  </figure>
+
+  <div class="cart-item--inner">
+
+    <div class="cart-item--content">
+      <h2 class="cart-item--content-title">
+        <a href="{{ item.url }}">
+          {{ item.product.title }}
+        </a>
+      </h2>
+
+      {% unless item.product.has_only_default_variant %}
+        {% for option in item.product.options %}
+          <div class="cart-item--product-options">
+            <span class="cart-item--option-name">{{ option }}</span>
+            {{ item.variant.options[forloop.index0] }}
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+      <div class="cart-item--content-price">
+        <span class="cart-item--price-title">
+          {{ 'cart.general.price' | t }}
+        </span>
+
+        {% if compare_at_price > item.price or item.original_price > item.final_price %}
+          <span class="visually-hidden">{{ 'product.item.price.original' | t }}</span>
+          <s class="cart-item--sale-price money">
+            {%- if item_has_discounts -%}
+            {{ item.original_price | divided_by:1.20 | money }} <span clas="cart-vat"> Ex Vat</span>
+            {%- else -%}
+              {{ compare_at_price | divided_by:1.20 | money }} <span clas="cart-vat"> Ex Vat</span>
+            {%- endif %}
+          </s>
+          <span class="visually-hidden">{{ 'product.item.price.current' | t }}</span>
+        {% endif %}
+
+        <span class="money {% if item_has_discounts %}cart-item--discount-price{% endif %}">
+          {%- if item_has_discounts -%}
+          	{{ item.final_price | divided_by:1.20 | money }}<span clas="cart-vat"> Ex Vat</span>
+          {%- else -%}
+            {{ item.original_price | divided_by:1.20 | money }}<span clas="cart-vat"> Ex Vat</span>
+          {%- endif %}
+        </span>
+      </div>
+
+      {%- if item_has_discounts -%}
+        <ul class="discount-list" aria-label="{{ 'product.general.discounts' | t }}">
+          {% for discount_allocation in item.line_level_discount_allocations %}
+            <li class="discount-list-item">
+              {% include 'icon-library', id: 'icon-sale-tag' %}
+              {{ discount_allocation.discount_application.title }}
+              (-<span class="money">{{ discount_allocation.amount | money }}</span>)
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if settings.product_show_sku == true %}
+        <div
+          class="
+            cart-item--sku
+            {% if item.sku == empty %}cart-item--sku-empty{% endif %}
+          "
+        >
+          {{ 'product.general.sku_html' | t: sku: item.sku | strip_newlines }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="cart-item--info">
+      <div class="cart-item--quantity form-fields--qty" data-quantity-wrapper>
+        <div class="form-field form-field--qty-select {% if item.quantity < 10 %}visible{% else %}hidden{% endif %}">
+          <div class="form-field form-field--qty-input">
+		    <span class="qty-down">
+			  <svg width="15" height="4" viewBox="0 0 15 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+			    <rect y="0.979187" width="14.5" height="2.2" rx="1.1" fill="white"/>
+			  </svg>
+			</span>
+			<input
+              class="form-field-input form-field-number form-field-filled"
+              value="{{ item.quantity }}"
+              name="updates[]"
+              id="updates_{{ item.key }}"
+              type="text"
+              pattern="\d*"
+              {% if item.quantity < 10 %}tabindex="-1"{% endif %}
+              aria-label="{{ 'general.general.quantity' | t }}"
+              data-quantity-input
+              data-cartitem-quantity />
+          	<span class="qty-up">
+			  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			    <path d="M15.4909 8C15.4909 8.62191 14.9791 9.12535 14.3481 9.12535H9.20522V14.1879C9.20522 14.8098 8.69343 15.3125 8.06236 15.3125C7.43129 15.3125 6.9195 14.8098 6.9195 14.1879V9.12535H1.77665C1.14557 9.12535 0.633789 8.62191 0.633789 8C0.633789 7.37809 1.14557 6.87535 1.77665 6.87535H6.9195V1.81285C6.9195 1.19094 7.43129 0.6875 8.06236 0.6875C8.69343 0.6875 9.20522 1.19094 9.20522 1.81285V6.87535H14.3481C14.9802 6.875 15.4909 7.37773 15.4909 8Z" fill="white"/>
+			  </svg>
+			</span>
+          </div>
+        </div>
+        <div class="cart-item--total">
+          <span class="visually-hidden">{{ 'product.item.price.total_line_price' | t }}</span>
+          {%- if item_has_discounts -%}
+            <span class="visually-hidden">{{ 'product.item.price.original' | t }}</span>
+            <s class="original-price money">{{ item.original_line_price | divided_by:1.20 | money }}<span clas="cart-vat"> Ex Vat</span></s>
+            <span class="visually-hidden">{{ 'product.item.price.current' | t }}</span>
+          {%- endif -%}
+          <div
+            class="money {% if item_has_discounts %}cart-item--discount-price{% endif %}"
+            aria-live="polite"
+            data-cartitem-total
+          >
+          <span>{{ item.final_line_price | money }} <span clas="cart-vat"> Inc Vat </span>
+		  </div>
+
+          {% comment %}
+          <span class="cart-vat-price">{{ item.final_line_price | money }}<span clas="cart-vat"> inc Vat </span></span>
+          {% endcomment %}
+        </div>
+      </div>
+    </div>
+	<div class="cart-item--remove">
+        <a
+          href="/cart/change?line={{ forloop.index }}&amp;quantity=0"
+          class="cart-item--remove-link"
+          data-cartitem-remove
+          aria-label="remove {{ item.product.title | escape }}"
+        >
+          {% include 'icon-remove' %}
+        </a>
+      </div>
+  </div>
+</li>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <script>(function () { function asyncLoad() { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s3.eu-west-1.amazonaws.com/production-klarna-il-shopify-osm/06813f2bbb40bf097c85cc33982be5da59692f3f/enableoffice.myshopify.com-1679925518323.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (window.attachEvent) { window.attachEvent('onload', asyncLoad); } else { window.addEventListener('load', asyncLoad, false); } })(); </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJJF4QG');</script>
+<!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJJF4QG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+	<div class="custom-header">
+		<div class="wrap">		
+			<div>
+				{{ content_for_logo }}
+			</div>
+			<div class="custom-header__secure">
+				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+					<path d="M3.125 7.5V5.625C3.125 2.51836 5.64453 0 8.75 0C11.8555 0 14.375 2.51836 14.375 5.625V7.5H15C16.3789 7.5 17.5 8.62109 17.5 10V17.5C17.5 18.8789 16.3789 20 15 20H2.5C1.11914 20 0 18.8789 0 17.5V10C0 8.62109 1.11914 7.5 2.5 7.5H3.125ZM5.625 7.5H11.875V5.625C11.875 3.89922 10.4766 2.5 8.75 2.5C7.02344 2.5 5.625 3.89922 5.625 5.625V7.5Z" fill="#23AF3A"/>
+				</svg>
+				<h2>Secure Checkout</h2>
+			</div>
+		</div>
+	</div>
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            
+			{% include 'checkout-breadcrumbs' %}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+			<div class="custom-usp">
+				<div class="custom-usp__item">
+					<img src="{{ 'delivery-truck.png' | asset_img_url }}" />
+					<span class="custom-usp__item-title">Free Delivery</span>
+					<span>
+						On Orders<br/>
+						{% comment %}
+							Localize the free delivery threshold.
+							Ideally this could use the metaobject `Localized Strings`,
+							but Shopify doesn't seem to allow access to metaobjects in the checkout.
+						{% endcomment %}
+						{% if localization.country.iso_code == 'IE' %}
+							Over €250
+						{% else %}
+							Over £250
+						{% endif %}
+					</span>
+				</div>
+				<div class="custom-usp__item">
+					<img src="{{ 'payment-card.png' | asset_img_url }}" />
+					<span class="custom-usp__item-title">Price Match</span>
+					<span>Found it cheaper?<br/>We will match it</span>
+				</div>
+				<div class="custom-usp__item">
+					<img src="{{ 'users.png' | asset_img_url }}" />
+					<span class="custom-usp__item-title">Bulk Discounts</span>
+					<span>Contact us for the<br/>best price</span>
+				</div>
+			</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+  
+  	{% style %}
+		body {
+			background: #ffffff;
+		}
+		.sidebar::after {
+			background-color: #F4F9FC;
+		}
+		.custom-header {
+			display:none;
+		}
+		.custom-header .wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.custom-header .wrap::before {
+			display:none;
+		}
+		.custom-header .wrap::after {
+			display:none;
+		}
+		.custom-header__secure {
+			color: #23AF3A;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 1.5;
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.order-summary__section~.order-summary__section {
+			border-color: #BCE3FD;
+		}
+		.sidebar .total-line-table__tbody+.total-line-table__tbody .total-line:first-child th::before, .sidebar .total-line-table__tbody+.total-line-table__tbody .total-line:first-child td::before, .sidebar .total-line-table__tbody+.total-line-table__footer .total-line:first-child th::before, .sidebar .total-line-table__tbody+.total-line-table__footer .total-line:first-child td::before {
+			background-color: #BCE3FD;
+		}
+		.sidebar .order-summary__small-text {
+			color: #2280BF;
+		}
+		.sidebar, .sidebar .payment-due__price {
+			color: #173760;
+		}
+		.sidebar .order-summary__emphasis {
+			color: #306A90;
+		}
+		.sidebar .total-line-table__tbody .order-summary__emphasis, .sidebar .total-line-table__tbody .order-summary__small-text {
+			color: #173760;
+		}
+
+		.sidebar .payment-due__currency {
+			color: #2280BF;
+			background-color: #BCE3FD;
+			border-radius: 6px;
+			padding: 1px 4px;
+		}
+
+		.custom-usp {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-top: 1px solid #BCE3FD;
+			border-bottom: 1px solid #BCE3FD;
+			padding: 28px 0;
+		}
+		.custom-usp__item {
+			text-align: center;
+		}
+		.custom-usp__item img {
+			padding-bottom: 16px;
+		}
+		.custom-usp__item-title {
+			padding-bottom: 7px;
+			color: #306A90;
+			font-weight: 600;
+			font-size: 16px;
+		}
+		.custom-usp__item span {
+			display: block;
+			font-size: 12px;
+			color: #2280BF;
+		}
+		.btn {
+			background-color: #23AF3A;
+		}
+		.btn:hover {
+			background-color: #23AF3A;
+		}
+		@media only screen and (min-width: 1000px) {
+			.custom-header {
+				display: block;
+				background-color: #ffffff;
+				padding: 40px 0;
+				border-bottom: 1px solid #BCE3FD;
+			}
+			.sidebar::after {
+				-webkit-box-shadow: 1px 0 0 #BCE3FD inset;
+				box-shadow: 1px 0 0 #BCE3FD inset;
+			}
+			.order-summary__section--product-list::after {
+				background-color: #BCE3FD;
+			}
+			.order-summary__sections {
+				height: auto;
+			}
+		}
+		
+
+	{% endstyle %}
+	</body>
+</html>

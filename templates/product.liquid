@@ -1,0 +1,14 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% include 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+{% section 'static-product-details' %}
+
+{% section 'static-product-recommendations' %}
+
+{% section 'static-product-reviews' %}
+
+{% section 'static-recently-viewed' %}
+{{product.metafields.shogun.below}}

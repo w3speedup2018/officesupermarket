@@ -1,0 +1,166 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="static-footer">
+</script>
+
+<footer role="contentinfo" aria-label="Footer">
+  <section class="footer-newsletter">
+    <div class="footer-newsletter--container">
+        <div class="footer-newsletter--content">
+            <div class="content">
+                <h2>Subscribe</h2>
+                <p>Join our mailing list, go on it might suprise you!</p>
+            </div>
+            {% render 'newsletter' %}
+        </div>
+    </div>    
+  </section>  
+  <section class="site-footer-wrapper">
+    {% if section.blocks.size %}
+      <div class="site-footer-item">
+        <div class="site-footer-blocks column-count-{{ section.blocks.size }}">
+          {% for block in section.blocks %}
+            {% include 'footer-block' %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="site-footer-item">
+      <div class="site-footer-information">
+        {% if section.settings.payment_icons and shop.enabled_payment_types.size > 0 %}
+            <div class="site-footer-center">
+                <ul class="payment-icons">
+                {% for type in shop.enabled_payment_types %}
+                    <li class="payment-icons-item">
+                    {{ type | payment_type_svg_tag }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="site-footer-center">
+
+          <p class="site-footer-credits">
+            {% assign year = 'now' | date: '%Y' %}
+            {{ 'footer.general.copyright_html' | t: year: year, shop_name: shop.name }}
+          </p>
+
+          <p class="site-footer-credits">
+            <a class="website-by" href="https://doublebrace.com" target="_blank">A website by <img src="{{ 'db-color-logo.png' | asset_img_url }}" alt="Double Brace Website Agency logo" /></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Payment icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_icons",
+      "label": "Show payment icons",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Additional menu"
+    },
+    {
+      "type": "link_list",
+      "id": "additional_menu",
+      "label": "Menu",
+      "default": "footer",
+      "info": "This menu won't show dropdown items."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "main-menu",
+          "info": "This menu won't show dropdown items."
+        }
+      ]
+    },
+    {
+      "type": "rich_text",
+      "name": "Rich text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Rich text"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news and seasonal promotions.</p>"
+        }
+      ]
+    },
+    {
+      "type": "social_accounts",
+      "name": "Social accounts",
+      "limit": 1,
+      "settings": [
+       {
+         "type": "paragraph",
+         "content": "Social links can be managed in your General settings."
+       }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Subscribe"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Invite customers to join your mailing list.</p>"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {
+      "additional_menu": "footer"
+    },
+    "blocks": [
+      {
+        "type": "menu",
+        "settings": {}
+      },
+      {
+        "type": "newsletter",
+        "settings": {}
+      }
+    ]
+  }
+}
+
+{% endschema %}

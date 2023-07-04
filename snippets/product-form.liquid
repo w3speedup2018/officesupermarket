@@ -1,0 +1,171 @@
+
+{% comment %}
+  Product form
+
+  @param product
+
+  @param selected_variant
+{% endcomment %}
+
+{% if is_product_modal and settings.quickshop_show_dcb %}
+  {% assign quickshop_smart_buttons = true %}
+{% endif %}
+
+{% if is_product_modal == false and section.settings.show_dcb %}
+  {% assign product_smart_buttons = true %}
+{% endif %}
+
+{% if selected_variant.available == false %}
+  {% assign quickshop_smart_buttons = false %}
+  {% assign product_smart_buttons = false %}
+{% endif %}
+
+{% assign product_form_class = '' %}
+{% if product_smart_buttons or quickshop_smart_buttons %}
+  {% assign product_form_class = 'smart-payment-enabled' %}
+{% endif %}
+
+{% assign tag_alt = "BLANK" %} 
+{% for tag in product.tags %} 
+	{% assign tag_prefix = tag | slice: 0, 5 %}
+	{% if tag_prefix == "_alt_" %} 
+		{% assign tag_alt = tag %} 
+		{% break %}
+	{% endif %}
+{% endfor %} 
+
+{% assign taggedProduct = false %}
+{% if tag_alt != "BLANK" %}
+	{% assign taggedProduct = true %}
+{% endif %}
+
+<div>
+	{% comment %} hide colour options if there are tagged products  {% endcomment %}
+	{% comment %} assums first option is color {% endcomment %}
+	{% assign ids = '' %}
+	<p><strong>Colour</strong>: <span data-tagged-original-colour="{{ selected_variant.option1}}" data-tagged-selected-colour>{{ selected_variant.option1}}</span></p>
+	{% if collection %}
+		{% unless tag_alt == "BLANK" %}
+			{% if collection.products.size > 0 %}
+				{% assign alt_products_total = 0 %}
+				{% paginate collection.products by 400 %}
+					{% for alt_product in collection.products %}
+					{% if alt_product.tags contains tag_alt %}
+							<a href="{{alt_product.url | within: collection }}" class="custom-product-option-color {% if alt_product.id == product.id %} active {% endif %}" data-tagged-colour="{{alt_product.options_by_name['Colour'].values | first }}">
+								<img src="{{ alt_product.featured_image | img_url: '50x'}}" />
+							</a>
+					{% endif %}
+					{% endfor %}
+				{% endpaginate %}
+			{% endif %}
+		{% endunless %}
+	{% else %}
+		{% for collection in product.collections %}
+			{% if collection.products.size > 0 %}
+				{% assign alt_products_total = 0 %}
+				{% paginate collection.products by 400 %}
+					{% for alt_product in collection.products %}
+						{% if alt_product.tags contains tag_alt  %}
+							{% unless ids contains alt_product.id %}
+								<a href="{{alt_product.url | within: collection }}" class="custom-product-option-color {% if alt_product.id == product.id %} active {% endif %}" data-tagged-colour="{{alt_product.options_by_name['Colour'].values | first }}">
+									<img src="{{ alt_product.featured_image | img_url: '50x'}}" />
+								</a>
+							{% endunless %}
+						{% endif %}
+						{% assign ids = ids | append: alt_product.id %}
+					{% endfor %}
+				{% endpaginate %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+</div>
+
+{% form 'product', product, class: product_form_class, data-product-form: '' %}
+
+  {% if product.has_only_default_variant %}
+    <input
+      name="id"
+      value="{{ product.variants[0].id }}"
+      type="hidden">
+  {% else %}
+    {%
+      include 'product-options',
+      product: product,
+      selected_variant: selected_variant,
+      style: settings.product_option_style.
+	  taggedProduct: taggedProduct
+    %}
+  {% endif %}
+
+  <div class="product-form--atc">
+    <div class="product-form--atc-qty form-fields--qty" data-quantity-wrapper>
+      <div class="form-field form-field--qty-select">
+        <div class="form-field-select-wrapper">
+          <select
+            id="product-quantity-select"
+            class="form-field-input form-field-select"
+            aria-label="{{ 'general.general.quantity' | t }}"
+            data-quantity-select
+          >
+            {% for i in (1..9) %}
+              <option {% if i == 1 %}selected {% endif %}value="{{ i }}">
+                {{ i }}
+              </option>
+            {% endfor %}
+            <option value="10+">
+              10+
+            </option>
+          </select>
+          <label
+            for="product-quantity-select"
+            class="form-field-title"
+          >
+            {{ 'general.general.quantity' | t }}
+          </label>
+          {% include 'icon-chevron-down-small' %}
+        </div>
+      </div>
+      <div class="form-field form-field--qty-input hidden">
+        <input
+          id="product-quantity-input"
+          class="form-field-input form-field-number form-field-filled"
+          value="1"
+          name="quantity"
+          type="text"
+          pattern="\d*"
+          aria-label="{{ 'general.general.quantity' | t }}"
+          data-quantity-input
+        >
+        <label
+          for="product-quantity-input"
+          class="form-field-title"
+        >
+          {{ 'general.general.quantity' | t }}
+        </label>
+      </div>
+    </div>
+
+    <button
+      class="product-form--atc-button {% unless selected_variant.available %}disabled{% endunless %}"
+      type="submit"
+      {% unless selected_variant.available %}disabled{% endunless %}
+      data-product-atc>
+      <span class="atc-button--text">
+        {% if selected_variant.available %}
+          {{ 'product.buttons.add_to_cart' | t }}
+        {% else %}
+          {{ 'product.buttons.sold_out' | t }}
+        {% endif %}
+      </span>
+      <span class="atc-button--icon">
+        {%- include 'icon-spinner' %}
+      </span>
+    </button>
+  </div>
+
+  {% if product_smart_buttons or quickshop_smart_buttons %}
+    {{ form | payment_button }}
+  {% endif %}
+{% endform %}
+
+<div id="product-reviews-placeholder"></div> 

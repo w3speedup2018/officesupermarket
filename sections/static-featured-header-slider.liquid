@@ -1,0 +1,206 @@
+<script
+	type="application/json"
+	data-section-type="static-featured-header-slider"
+	data-section-id="{{ section.id }}">
+</script>
+
+{% if section.settings.show_featured_header and section.blocks.size > 0 %}
+
+	<div class="featured-header-slider-container">
+		<div class="featured-header-slider">
+
+			<div class="img-left">
+				{% if section.settings.image_left_link %}
+					<a href="{{section.settings.image_left_link}}">
+				{% endif %}
+				{% assign image_left = section.settings.image_left %}
+				{% if section.settings.image_left_IE != blank and localization.country.iso_code == 'IE' %}
+					{% assign image_left = section.settings.image_left_IE %}
+				{% endif %}
+				{% if image_left %}
+					{%
+						include 'rimg',
+						img: image_left,
+						size: '436x',
+					%}
+				{% endif %}
+				{% if section.settings.image_left_link %}
+					</a>
+				{% endif %}
+			</div>
+
+			<div class="img-right">
+				<div
+					class="
+						swiffy-slider
+						slider-indicators-round
+						{% if section.settings.enable_autoplay %}
+							slider-nav-autoplay
+							slider-nav-autopause
+						{% endif %}
+					"
+					{% if section.settings.enable_autoplay %}
+						data-slider-nav-autoplay-interval="{{ section.settings.autoplay_duration | times: 1000 }}"
+					{% endif %}
+				>
+					<ul class="slider-container">
+						{% for block in section.blocks %}
+
+							{% assign background_image = block.settings.background_image %}
+							{% assign background_image_mobile = block.settings.background_image_mobile %}
+							{% if localization.country.iso_code == 'IE' %}
+								{% if block.settings.background_image_IE != blank %}
+									{% assign background_image = block.settings.background_image_IE %}
+								{% endif %}
+								{% if block.settings.background_image_mobile_IE != blank %}
+									{% assign background_image_mobile = block.settings.background_image_mobile_IE %}
+								{% endif %}
+							{% endif %}
+
+							{% if forloop.first != false %}
+								{% assign notFirst = false %}
+							{% else %}
+								{% assign notFirst = true %}
+							{% endif %}
+
+							{% if background_image %}
+								<li>
+									{% if block.settings.link %}
+										<a href="{{block.settings.link}}">
+									{% endif %}
+										{%
+											render: 'rimg',
+											img: background_image,
+											class: 'desktop'
+											size: '896x436',
+											lazy: notFirst,
+										%}
+										{%
+											render: 'rimg',
+											img: background_image_mobile,
+											class: 'mobile'
+											size: '436x',
+											lazy: notFirst,
+										%}
+									{% if block.settings.link %}
+										</a>
+									{% endif %}
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+
+					<button type="button" class="slider-nav"></button>
+					<button type="button" class="slider-nav slider-nav-next"></button>
+
+					<div class="slider-indicators">
+						<button class="active"></button>
+						<button></button>
+						<button></button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endif %}
+{% schema %}
+{
+	"name": "Featured Header w/ Slider",
+	"class": "featured-slider--section",
+	"settings": [
+		{
+			"id": "show_featured_header",
+			"type": "checkbox",
+			"label": "Enable",
+			"default": true
+		},
+		{
+			"id": "image_left",
+			"type": "image_picker",
+			"label": "Image Left"
+		},
+		{
+			"id": "image_left_IE",
+			"type": "image_picker",
+			"label": "Image Left (IE)"
+		},
+		{
+			"id": "image_left_link",
+			"type": "url",
+			"label": "Image Left Link"
+		},
+		{
+			"type": "header",
+			"content": "Slider"
+		},
+		{
+			"id": "enable_autoplay",
+			"type": "checkbox",
+			"label": "Autoplay Slideshow",
+			"default": true
+		},
+		{
+			"id": "autoplay_duration",
+			"type": "range",
+			"label": "Autoplay Slide Duration",
+			"min": 5,
+			"max": 12,
+			"step": 1,
+			"unit": "sec",
+			"default": 8
+		}
+	],
+	"blocks": [
+		{
+			"type": "slide",
+			"name": "Slide",
+			"settings": [
+				{
+					"id": "title",
+					"type": "text",
+					"label": "Heading",
+					"default": "Slideshow"
+				},
+				{
+					"id": "link",
+					"type": "url",
+					"label": "Link"
+				},
+				{
+					"type": "header",
+					"content": "Default images"
+				},
+				{
+					"id": "background_image",
+					"type": "image_picker",
+					"label": "Image (Desktop)",
+					"info": "896x436 recommended"
+				},
+				{
+					"id": "background_image_mobile",
+					"type": "image_picker",
+					"label": "Image (Mobile)",
+					"info": "436x436 recommended"
+				},
+				{
+					"type": "header",
+					"content": "IE images"
+				},
+				{
+					"id": "background_image_IE",
+					"type": "image_picker",
+					"label": "Image (Desktop) (IE)",
+					"info": "896x436 recommended"
+				},
+				{
+					"id": "background_image_mobile_IE",
+					"type": "image_picker",
+					"label": "Image (Mobile) (IE)",
+					"info": "436x436 recommended"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

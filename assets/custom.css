@@ -1,0 +1,142 @@
+.similar-collections {
+	flex-wrap: nowrap;
+	display: flex;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	align-items: end;
+	overflow: auto;
+}
+.similar-collection {
+	display: block;
+	min-width: 150px;
+	margin: 10px;
+	text-align: center;
+	color: #306a90;
+}
+
+#product-reviews iframe {
+	background-color: #f6f6f6;
+	padding-bottom: 25px;
+}
+
+.product-information-boxes {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+}
+.product-information-boxes .information-box {
+	/* minus margin */
+	flex-basis: calc(50% - 20px);
+	flex-grow: 1;
+	background-color: #f6f6f6;
+	padding: 10px;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+@media only screen and (max-width: 425px) {
+	.product-information-boxes .information-box {
+		flex-basis: 100%;
+	}
+}
+
+.product-dimensions {
+	text-align: center;
+	margin-bottom: 5px;
+}
+.product-dimensions p {
+	margin-bottom: 5px;
+}
+
+.product-content-nav {
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+	margin-top: 65px;
+}
+
+.product-content-nav nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	align-items: stretch;
+	text-align: center;
+	border: 1px solid rgba(127, 127, 127, 0.16);
+	border-bottom-color: black;
+	box-shadow: 0 1px 4px rgb(127 127 127 / 11%);
+	overflow: auto;
+}
+@media only screen and (max-width: 767px) {
+	.product-content-nav nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.product-content-nav nav button {
+		width: 100%;
+		border-bottom: 1px solid #f6f6f6;
+	}
+}
+.product-content-nav nav button {
+	background-color: #ffffff;
+	font-size: 18px;
+	font-weight: 700;
+	color: #4d4d4d;
+	padding: 20px;
+	text-decoration: none;
+	flex-grow: 1;
+	min-width: 200px;
+	font-family: "Lato";
+	border: none;
+	cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+	.product-content-nav {
+		padding: 0;
+	}
+}
+
+.tablinks.active {
+	background-color: #f6f6f6;
+}
+.tabcontent {
+	display: none;
+	margin-top: 0;
+	-webkit-animation: fade-in 2s;
+	animation: fade-in 2s;
+}
+.tabcontent.active {
+	display: block;
+}
+
+.delivery-message-section {
+	font-size: 18px;
+}
+.product-delivery--container {
+	background-color: #f6f6f6;
+	padding: 20px;
+	text-align: center;
+}
+.product-delivery--container .installation-message {
+	max-width: 75%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.product-section--container h2 {
+	text-align: center;
+}
+
+
+.cart-title-total .money {
+	display: inline-block;
+}
+.cart-title-total #revy-cart-subtotal-price {
+	display: inline-block;
+}

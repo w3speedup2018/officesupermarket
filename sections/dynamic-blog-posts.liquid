@@ -1,0 +1,124 @@
+{% assign blog = blogs[section.settings.blog] %}
+{% assign blog_url = '#' %}
+{% assign onboarding = true %}
+
+{% if section.settings.blog != 'none' and blog.articles.size > 0 %}
+  {% assign onboarding = false %}
+  {% assign blog_url = blog.url %}
+{% endif %}
+
+{% assign article_count = 3 %}
+{% if onboarding == false and blog.articles.size < article_count %}
+  {% assign article_count = blog.articles.size %}
+{% endif %}
+
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-blog-posts">
+</script>
+
+<style>
+    .blogposts--section {
+      background-color: {{ section.settings.background_color }};
+    }
+</style>
+
+<section class="blogposts-section blogposts--count-{{ article_count }}">
+  <div class="blogposts--container">
+	<div class="blogposts--content"> 
+		{% if section.settings.title != blank %}
+			<h2 class="home-section--title">
+			{{ section.settings.title | escape }}
+			</h2>
+		{% endif %}
+		{% if section.settings.content != blank %}
+			<p>{{section.settings.content}}</p>
+		{% endif %}
+	</div>
+
+	<ul class="blogposts--inner" data-blog-posts>
+		{% if onboarding %}
+		{% for i in (1..article_count) %}
+			{%
+			include 'article-excerpt',
+			onboarding: true
+			%}
+		{% endfor %}
+		{% else %}
+		{% for article in blog.articles limit: article_count %}
+			{%
+			include 'article-excerpt',
+			article: article
+			%}
+		{% endfor %}
+		{% endif %}
+	</ul>
+
+	<div class="blogposts--footer">
+		<a class="blogposts--footer-link button-primary" href="{{ blog_url }}">
+		{{ 'blog.general.see_more' | t }}
+		</a>
+	</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "blogposts--section",
+  "settings": [
+	{
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog posts"
+    },
+	{
+      "type": "text",
+      "id": "content",
+      "label": "Content",
+      "default": "Check out our latest blog posts"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date published",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show post author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show post excerpt",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "category": "Blog",
+      "name": "Blog posts",
+      "settings": {
+        "blog": "none"
+      }
+    }
+  ]
+}
+
+{% endschema %}

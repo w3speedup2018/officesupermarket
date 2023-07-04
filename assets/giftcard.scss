@@ -1,0 +1,2242 @@
+// 
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n4.c86cddcf8b15d564761aaa71b6201ea326f3648b.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=579b45a516ff24b744902ba27ad2452933c7c06c824a0721c97a8ca4131d8c3c") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n4.e0ee1e2c008a0f429542630edf70be01045ac5e9.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=9e870d683cca3d713c4d939ff1b673d1b3c452eb528aa6dffcc9c2e831a8071f") format("woff");
+}
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i4.7307831c0d06d264a76f2f7310f8a29d0507d6d0.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=7d63543eca62294c35e85d5040bcc4f8462f02bd99c274ba91de74d9716121f4") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i4.fb695d0d68d5b174347edaf543726b1903b57796.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3fd3bb7321ad3fa81b33e62b3c3d48ea1a5fff419d55fcc321ade73e8c3d3456") format("woff");
+}
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n7.f0037142450bd729bdf6ba826f5fdcd80f2787ba.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=1cbe29b6356c059522091812d2a20f2da605d323d49fc4865eb7e8f7c679615f") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n7.50161a3d4f05d049b7407d86c5a8834e4d6e29bf.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3cf6e979c2b51e4a12caff651752e94939377a500a52c4053fd36f30561120b0") format("woff");
+}
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i7.86965a52f2ddabac45abc106c3d0cc22ac7b57bb.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=47423aa95e8e33c11a0f6b17d2ab8724e6f667c0130adc872bc8eba5f2615a76") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i7.34d7f5a12391e5532b516b8bb3974f4cc3ee25ae.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=381f50d8a5985b2f2ac215d6d79af984a9fd851e1f8248b23cb0fd902f1b871a") format("woff");
+}
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+  
+
+  
+  
+  
+  
+
+  $type-body: type_body;
+  $type-body-family: Lato, sans-serif;
+  $type-body-styles: ((normal, italic), (normal, italic));
+  $type-body-named-styles: ((initial, italic), (initial, italic));
+  $type-body-weights: (400, 700);
+  $type-body-named-weights: (initial, bolder);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n5.10bc1bd2bdb4c0ac35363745e79901b69a0be29a.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=620f7850a264f46f85716e950f5e9e265af0d46e6443fc494e553f4beb181883") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n5.f7f0195bc06ce869daac4bf73d242fb9b37734db.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=24de913cbf4c515c33feeb69b43d87f400062b752c228df666ce3d144b873a09") format("woff");
+}
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 500;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i5.34a1281e461a2dbf339c6340939aff4fa5a02ce4.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=e6a000fa75543a6fc52c8d1e860e0f257c3dd2b863f24ba1520b40b204d9f457") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i5.dfa979b4c6c5c096432f0742c70ca73f045a9465.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3a967b8932810ada73a06a13728aaa1c4676004e780cbfa2ac8aef07c355efb1") format("woff");
+}
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n7.f0037142450bd729bdf6ba826f5fdcd80f2787ba.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=1cbe29b6356c059522091812d2a20f2da605d323d49fc4865eb7e8f7c679615f") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n7.50161a3d4f05d049b7407d86c5a8834e4d6e29bf.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3cf6e979c2b51e4a12caff651752e94939377a500a52c4053fd36f30561120b0") format("woff");
+}
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i7.86965a52f2ddabac45abc106c3d0cc22ac7b57bb.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=47423aa95e8e33c11a0f6b17d2ab8724e6f667c0130adc872bc8eba5f2615a76") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i7.34d7f5a12391e5532b516b8bb3974f4cc3ee25ae.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=381f50d8a5985b2f2ac215d6d79af984a9fd851e1f8248b23cb0fd902f1b871a") format("woff");
+}
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+  
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 100;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n1.e49f480ba5e9b0fa42a5317bc54131cafd9c40b7.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=7d2794ee4bd4156236d92c148c73eda421b12efbad898a1d8d524737b087aa10") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n1.f54ae865ead23d25f6f16ac022ce6185dac59e69.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=10a517a253840f8f2331c61a5ab5d50d0228171da8e7674c5bd965478e362a59") format("woff");
+}
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 100;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i1.05d83819820a3ea8339443049f6c4a551481f9c6.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=e5576dcb046846f3e55aaecaa52a6557f15e4539ea805b0a215b4e3a949a3ad9") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i1.bae1aff2f7c450a62d15eb61ef9304e44eafe140.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=4f70b016c01e48857bc3b22f5447f46364239c50500775697b6d186cd5661912") format("woff");
+}
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+  
+
+  
+  
+  
+  
+
+  $type-heading: type_heading;
+  $type-heading-family: Lato, sans-serif;
+  $type-heading-styles: ((normal, italic), (normal, italic), (normal, italic));
+  $type-heading-named-styles: ((initial, italic), (initial, italic), (initial, italic));
+  $type-heading-weights: (500, 700, 100);
+  $type-heading-named-weights: (initial, bolder, lighter);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n7.f0037142450bd729bdf6ba826f5fdcd80f2787ba.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=1cbe29b6356c059522091812d2a20f2da605d323d49fc4865eb7e8f7c679615f") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n7.50161a3d4f05d049b7407d86c5a8834e4d6e29bf.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3cf6e979c2b51e4a12caff651752e94939377a500a52c4053fd36f30561120b0") format("woff");
+}
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i7.86965a52f2ddabac45abc106c3d0cc22ac7b57bb.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=47423aa95e8e33c11a0f6b17d2ab8724e6f667c0130adc872bc8eba5f2615a76") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i7.34d7f5a12391e5532b516b8bb3974f4cc3ee25ae.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=381f50d8a5985b2f2ac215d6d79af984a9fd851e1f8248b23cb0fd902f1b871a") format("woff");
+}
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  $type-button: type_button;
+  $type-button-family: Lato, sans-serif;
+  $type-button-styles: ((normal, italic), ());
+  $type-button-named-styles: ((initial, italic), ());
+  $type-button-weights: (700);
+  $type-button-named-weights: (initial);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @font-face {
+  font-family: Futura;
+  font-weight: 600;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/futura/futura_n6.bbe2e25d5b96d13ff36b242171a3d07cf5a60170.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=c28580d0b8e1b8bcc5222f1871acfd634d58fb31c3eeec0148fbb1e370776ac6") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_n6.66fa8f5c3c4b2c7c04809ecefe751450fa59d995.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=826d768cf8b346de9ea16781a68ba0d6f0d824f6795c6bb6524eb34d94a85427") format("woff");
+}
+
+  @font-face {
+  font-family: Futura;
+  font-weight: 600;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/futura/futura_o6.2978dbd38bd9b3e8b72ee3299cd940da2900eb72.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=d761d7a464cbecd578210f2baf66c37e84331cf4e53626e9a5f37a4af085f3bc") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_o6.bbc5bc6e7a675b3182e4866da9f9643bb3821261.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=751d0db63680e88d8c326b42df302a51f7de43aeaaeb3cbd61b7d4a52f9a6caf") format("woff");
+}
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  $type-menu: type_menu;
+  $type-menu-family: Futura, sans-serif;
+  $type-menu-styles: ((normal, oblique), ());
+  $type-menu-named-styles: ((initial, italic), ());
+  $type-menu-weights: (600);
+  $type-menu-named-weights: (initial);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n5.10bc1bd2bdb4c0ac35363745e79901b69a0be29a.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=620f7850a264f46f85716e950f5e9e265af0d46e6443fc494e553f4beb181883") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n5.f7f0195bc06ce869daac4bf73d242fb9b37734db.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=24de913cbf4c515c33feeb69b43d87f400062b752c228df666ce3d144b873a09") format("woff");
+}
+
+  @font-face {
+  font-family: Lato;
+  font-weight: 500;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i5.34a1281e461a2dbf339c6340939aff4fa5a02ce4.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=e6a000fa75543a6fc52c8d1e860e0f257c3dd2b863f24ba1520b40b204d9f457") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i5.dfa979b4c6c5c096432f0742c70ca73f045a9465.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3a967b8932810ada73a06a13728aaa1c4676004e780cbfa2ac8aef07c355efb1") format("woff");
+}
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/lato/lato_n7.f0037142450bd729bdf6ba826f5fdcd80f2787ba.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=1cbe29b6356c059522091812d2a20f2da605d323d49fc4865eb7e8f7c679615f") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_n7.50161a3d4f05d049b7407d86c5a8834e4d6e29bf.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=3cf6e979c2b51e4a12caff651752e94939377a500a52c4053fd36f30561120b0") format("woff");
+}
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Lato;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/lato/lato_i7.86965a52f2ddabac45abc106c3d0cc22ac7b57bb.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=47423aa95e8e33c11a0f6b17d2ab8724e6f667c0130adc872bc8eba5f2615a76") format("woff2"),
+       url("https://fonts.shopifycdn.com/lato/lato_i7.34d7f5a12391e5532b516b8bb3974f4cc3ee25ae.woff?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=381f50d8a5985b2f2ac215d6d79af984a9fd851e1f8248b23cb0fd902f1b871a") format("woff");
+}
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+  
+
+  
+  
+  
+  
+
+  $type-section: type_section;
+  $type-section-family: Lato, sans-serif;
+  $type-section-styles: ((normal, italic), (normal, italic));
+  $type-section-named-styles: ((initial, italic), (initial, italic));
+  $type-section-weights: (500, 700);
+  $type-section-named-weights: (initial, bold);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+$font-variables: ($type-body $type-heading $type-button $type-menu $type-section);
+$font-variables-families: ($type-body-family $type-heading-family $type-button-family $type-menu-family $type-section-family);
+$font-variables-weights: ($type-body-weights $type-heading-weights $type-button-weights $type-menu-weights $type-section-weights);
+$font-variables-named-weights: ($type-body-named-weights $type-heading-named-weights $type-button-named-weights $type-menu-named-weights $type-section-named-weights);
+$font-variables-styles: ($type-body-styles $type-heading-styles $type-button-styles $type-menu-styles $type-section-styles);
+$font-variables-named-styles: ($type-body-named-styles $type-heading-named-styles $type-button-named-styles $type-menu-named-styles $type-section-named-styles);
+
+// Find the index of the font setting for cross referencing
+@function font-setting-index($font-type) {
+  @return index($font-variables, $font-type);
+}
+
+// Font
+// --------
+// Find the index of a font weight from its relative name
+// - [$font-type]: Variable of font to look up
+// - [$font-weight]: lighter/initial/bolder
+@function font-weight-index($font-type, $font-weight: initial) {
+  $font-setting-index: font-setting-index($font-type);
+
+  // Look up available weights based on index of font setting
+  $named-weights: nth($font-variables-named-weights, $font-setting-index);
+
+  // Try to find index of desired font weight by cross referencing
+  $weight-index: index($named-weights, $font-weight);
+
+  // Return index of named weight, or return initial weight
+  @return if($weight-index, $weight-index, 1);
+}
+
+// Font
+// --------
+// Find the font family for a font setting
+// - [$font-type]: Variable of font to look up
+@function font-family($font-type) {
+  @return nth($font-variables-families, font-setting-index($font-type));
+}
+
+// Font
+// --------
+// Find a font style relative to a font weight
+// - [$font-type]: Variable of font to look up
+// - [$font-style]: initial/italic
+// - [$font-weight]: lighter/initial/bolder
+@function font-style($font-type, $font-style: initial, $font-weight: initial) {
+  $style: null;
+  $styles: null;
+
+  // Find index of font setting
+  $font-setting-index: font-setting-index($font-type);
+
+  // Get styles based on index of font setting
+  $font-styles: nth($font-variables-styles, $font-setting-index);
+  $font-named-styles: nth($font-variables-named-styles, $font-setting-index);
+
+  // Try to find index of desired font weight by cross referencing
+  $weight-named-index: font-weight-index($font-type, $font-weight);
+
+  // Get styles available for $font-weight
+  $named-weight-style: nth($font-styles, $weight-named-index);
+  $named-weight-named-style: nth($font-named-styles, $weight-named-index);
+
+  // Find position of $font-style
+  $style-named-index: index($named-weight-named-style, $font-style);
+
+  @if $style-named-index {
+    @return nth($named-weight-style, $style-named-index);
+  } @else {
+    // Return initial font style
+    @return nth($named-weight-style, 1);
+  }
+}
+
+// Font weight
+// --------
+// Find a font sensitive relative weight
+// - [$font-type]: Variable of font to look up
+// - [$font-weight]: lighter/initial/bolder
+@function font-weight($font-type, $font-weight: initial) {
+  $weight: null;
+
+  // Find index of font setting
+  $font-setting-index: font-setting-index($font-type);
+
+  // Look up available weights based on index of font setting
+  $weights: nth($font-variables-weights, $font-setting-index);
+
+  // Try to find index of desired font weight by cross referencing
+  $weight-index: font-weight-index($font-type, $font-weight);
+
+  // Return numerical weight of font
+  @return nth($weights, $weight-index);
+}
+
+// Font
+// --------
+// Generate complete font styles for a font setting
+// - [$font-type]: Variable of font to look up
+// - [$font-family]: true/false
+// - [$font-size]: unit/false
+// - [$font-style]: initial/italic/false
+// - [$font-weight]: lighter/initial/bolder/false
+@mixin font(
+  $font-type,
+  $font-family: true,
+  $font-size: false,
+  $font-style: initial,
+  $font-weight: initial
+) {
+  @if $font-family { font-family: font-family($font-type); }
+  @if $font-size { font-size: $font-size; }
+  @if $font-style { font-style: font-style($font-type, $font-style: $font-style, $font-weight: $font-weight ); }
+  @if $font-weight { font-weight: font-weight($font-type, $font-weight: $font-weight); }
+}
+
+
+
+
+
+
+
+
+
+// Setting abstracted libraries
+@function strip-units($value) {
+  @return ($value / ($value * 0 + 1));
+}
+
+@function rem($pxval, $rem-base: 16px) {
+  @return (strip-units($pxval) / strip-units($rem-base)) * 1rem;
+}
+
+@function rem2px($remval, $px-base: 16px) {
+  @return (strip-units($px-base) * strip-units($remval)) * 1px;
+}
+
+@function morph($color, $adjustment-value: 2) {
+  $lightness: lightness($color);
+  $light-color: false;
+
+  @if $lightness > 35% { $light-color: true; }
+
+  @if $light-color {
+    $lightness: ($lightness / 20) * $adjustment-value;
+    $color: darken($color, $lightness);
+  } @else {
+    @if $lightness < 2.5% {
+      $lightness: 30%;
+    } @else if $lightness < 7.5% {
+      $lightness: 15%;
+    }
+
+    $lightness: ($lightness / 10) * $adjustment-value;
+    $color: lighten($color, $lightness);
+  }
+
+  $saturation: saturation($color);
+  $saturated-color: false;
+
+  @if $saturation > 0% { $saturated-color: true; }
+
+  $saturation: ($saturation / 20);
+
+  @if $saturated-color {
+    @if $light-color {
+      $color: desaturate($color, $saturation);
+    } @else {
+      $color: saturate($color, $saturation);
+    }
+  }
+
+  @return $color;
+}
+
+// Check to see if a color is black and transparent
+@function color-transparent($color) {
+  @if (alpha($color) == 0 and red($color) == 0 and green($color) == 0 and blue($color) == 0) {
+    // Color is fully transparent, but black. Return opaque white for further adjustments
+    @return rgba(255, 255, 255, 1);
+  } @else {
+    @return $color;
+  }
+}
+
+// If background is dark return appropriate color for mixin
+@function border-mix($local-background, $local-dark, $local-light) {
+  @if(lightness($local-background) >= 50%) {
+    @return $local-dark;
+  } @else {
+    @return $local-light;
+  }
+}
+
+@function vw($pxval) {
+  $vw-context: $max-width / 100;
+  @return ($pxval/$vw-context) * 1vw;
+}
+
+
+// ! Colors
+
+// Backgrounds
+$color-background: color-transparent(#ffffff);
+
+// Typography
+$color-heading: #173760;
+$color-text: #4d4d4d;
+$color-text-encoded: "4d4d4d";
+$color-text-hover: morph($color-text, 5);
+$color-text-light: #949494;
+$color-link: #306a90;
+$color-link-hover: morph($color-link, 3);
+
+// Buttons
+$color-button-text: #ffffff;
+$color-button-background: #173760;
+$color-button-background-hover: mix($color-background, $color-button-background, 10%);
+$color-button-background-focus: morph($color-button-background);
+$color-button-disable: desaturate($color-button-background, 100%);
+
+$color-button-secondary-text: #0d1c35;
+$color-button-secondary-background: #ffffff;
+$color-button-secondary-background-hover: mix($color-background, $color-button-secondary-background, 10%);;
+$color-button-secondary-background-focus: morph($color-button-secondary-background);
+$color-button-secondary-border: #ffffff;
+$color-button-secondary-border-hover: morph($color-button-secondary-border);
+
+// Header
+$color-header-text: #173760;
+$color-header-background: color-transparent(#ffffff);
+
+// Forms
+$color-input-text: #484848;
+$color-input-text-hover: morph($color-input-text);
+$color-input-background: #ffffff;
+$color-input-border: #197bbd;
+$color-input-border-hover: morph($color-input-border, 2);
+
+$color-product-sale-accent: #267803;
+$color-product-review-star: #f6c347;
+
+// Footer
+$color-footer-text: #ffffff;
+$color-footer-background: color-transparent(#1d2e4c);
+$color-footer-link: morph($color-footer-text);
+$color-footer-color-alt: transparentize($color-footer-text, 0.2);
+$color-additional-accent: transparentize($color-footer-text, 0.5);
+
+// Placeholders
+$color-placeholder-background: mix($color-text, $color-background, 8%);
+$color-placeholder-fill: mix($color-text, $color-background, 35%);
+
+// General
+$color-black: #000;
+$color-white: #fff;
+$color-border: mix($color-background, border-mix($color-background, $color-black, $color-white));
+$color-border-soft: transparentize(border-mix($color-background, $color-black, $color-white), 0.85);
+$color-overlay-background: rgba(#000000, 0.5);
+$color-background-light: mix($color-text, $color-background, 5%);
+$color-search-category-background: mix($color-text, $color-background, 10%);
+
+$color-box-shadow-border: transparentize($color-border, 0.84);
+$color-box-shadow-shadow: transparentize($color-border, 0.89);
+$color-box-shadow-border-focused: transparentize($color-border, 0.5);
+$color-box-shadow-shadow-focused: transparentize($color-border, 0.5);
+
+$color-error: #f05d5d;
+$color-success: #51a551;
+$color-warning: #dfa354;
+$color-highlight: #fffbd9;
+$color-notice: $color-text;
+$color-sale: $color-product-sale-accent;
+$color-star: $color-product-review-star;
+$color-star-empty: mix($color-text, $color-background, 50%);
+
+$color-facebook: #425dab;
+$color-twitter: #1da1f2;
+$color-pinterest: #bd1c1c;
+$color-linkedin: #0077B5;
+
+// ! Typography
+
+// Fonts
+$font-heading: $type-heading !default;
+$font-body: $type-body !default;
+$font-button: $type-button !default;
+$font-menu: $type-menu !default;
+$font-section: $type-section !default;
+
+// Base Size
+$font-size-base: 15;
+$font-size-base-mobile: 15px;
+
+// Headings size adjustment
+$font-heading-sizing: 1.2;
+
+// Letter spacing
+$font-heading-spacing: 0.0em;
+$font-menu-spacing: 0.0em;
+$font-button-spacing: 0.0em;
+$font-section-spacing: 0.0em;
+
+// Capitalization
+$font-heading-capitalize: false;
+$font-menu-capitalize: false;
+$font-button-capitalize: false;
+$font-section-capitalize: false;
+
+// font sizes should be adjusted by this much if all caps.
+$capitalize_adjustment: -1;
+
+// Font sizes
+$font-body-size: $font-size-base;
+$font-body-size-small: rem($font-size-base - 1px); // 15px
+$font-body-size-smaller: rem($font-size-base - 2px); // 14px
+$font-body-size-smallest: rem($font-size-base - 3px); // 13px
+$font-heading-large: rem($font-size-base * 2.125); // 34px
+$font-heading-medium: rem($font-size-base * 1.875); // 32px
+$font-h1-size: rem($font-size-base * 1.75); // 28px
+$font-h2-size: rem($font-size-base * 1.625); // 26px
+$font-h3-size: rem($font-size-base * 1.5); // 24px
+$font-h4-size: rem($font-size-base * 1.25); // 20px
+$font-h5-size: rem($font-size-base * 1.125); // 18px
+$font-h6-size: rem($font-size-base); // 16px
+
+// ! Spacing
+
+// Vertical spaces
+$space-xxx-small: rem($font-body-size * 0.25); // 4px
+$space-xx-small: rem($font-body-size * 0.5); // 8px
+$space-x-small: rem($font-body-size * 0.75); // 12px
+$space-small: rem($font-body-size); // 16px
+$space-medium: rem($font-body-size * 1.25); // 20px
+$space-large: rem($font-body-size * 1.75); // 28px
+$space-x-large: rem($font-body-size * 2); // 32px
+$space-xx-large: rem($font-body-size * 3.125); // 50px
+$space-xxx-large: rem($font-body-size * 4.25); // 68px
+
+// Layout
+$max-width: 1400px;
+$gutter-outer-small: 10px;
+$gutter-outer-medium: 15px;
+$gutter-outer: 25px;
+$gutter-content: 20px;
+
+// ! Z-Indices
+
+$index-header: 700;
+$index-header-navmenu: $index-header + 2;
+$index-banner: 600;
+$index-main: 500;
+$index-footer: 500;
+$index-mobile-nav: $index-header + 100;
+$index-modal: $index-mobile-nav + 100;
+
+$index-header-search: 150;
+$index-header-internal-icons: 125;
+$index-header-internal-main: 100;
+$index-header-internal-nav: 50;
+
+// ! Breakpoints
+
+$bp-xxxs: 375px;
+$bp-xxs: 480px;
+$bp-xs: 680px;
+$bp-small: 720px;
+$bp-medium: 860px;
+$bp-large: 1024px;
+$bp-xl: 1080px;
+$bp-xxl: 1280px;
+$bp-xxxl: 1500px;
+
+// ! Components
+
+// Button font sizes
+$button-x-large-size: rem($font-size-base * 1.3125); // 21px
+$button-large-size: rem($font-size-base * 1.125); // 18px
+$button-medium-size: rem($font-size-base); // 16px
+$button-small-size: rem($font-size-base * 0.875); // 14px
+
+// Checkbox settings
+$checkbox-size: (13px, 13px);
+$checkbox-border: $color-input-border;
+$checkbox-inactive: $color-input-background;
+$checkbox-active: $color-link;
+
+// Transitions
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-ripple: cubic-bezier(0.330, 0.810, 0.585, 0.990);
+$ease-bubble: cubic-bezier(0.3, 0, 0, 1);
+
+// Logo widths
+$header-logo-image-max-width: 100px;
+$header-content-offset-right: 305px; // My account + Logout + Currency switcher
+
+$site-nav-item-space: 8px;
+$site-nav-link-space: 7px;
+$site-nav-link-space-vertical: 12px;
+$site-nav-link-space-horizontal: 15px;
+$site-subnav-space: 15px;
+
+ // Header Settings
+$header-content-height: 46px;
+$header-padding-vertical-mobile: 10px;
+$header-padding-vertical: 20px;
+$header-padding-vertical-sticky: 10px;
+$header-line-height: $font-body-size + 2px;
+
+// Product grid settings
+$sidebar-width: 185px;
+
+// Product page settings
+$color-slider-accent: $color-link;
+$color-slider-dot: mix($color-text, $color-background, 23%);
+$quantity-width: rem(115px);
+
+// Featured blog post
+$color-featured-post-background: $color-link;
+$color-featured-post-foreground: $color-background;
+
+// Swatch settings
+$swatches-size-product-page: 45px;
+$swatches-size-product-card: 20px;
+$swatches-size-sidebar-filter: 28px;
+$swatches-shape: circle;
+$swatches-variant-image-border-radius: 0;
+$swatches-variant-image-selected-border-radius: 1px;
+
+@mixin media($max: false, $min: false) {
+  @if $max {
+    @if $min {
+      @media screen and (max-width: $max - 1) and (min-width: $min) { @content; }
+    } @else {
+      @media screen and (max-width: $max - 1) { @content; }
+    }
+  } @else {
+    @media screen and (min-width: $min) { @content; }
+  }
+}
+
+// Reusable button style for changing button sizes at different break points
+@mixin button-size($button-size) {
+  $padding: false;
+
+  @if $button-size == small {
+    @include font-size-button-small($font-button-capitalize);
+    $padding: (10px, 16px);
+  } @else if $button-size == medium {
+    @include font-size-button-medium;
+    $padding: (12px, 18px);
+  } @else if $button-size == large {
+    @include font-size-button-large;
+    $padding: (14px, 28px);
+  } @else if $button-size == x-large {
+    @include font-size-button-x-large;
+    $padding: (14px, 28px);
+  }
+
+  @include capitalize($font-button-capitalize);
+  padding: rem(nth($padding, 1)) rem(nth($padding, 2));
+  letter-spacing: $font-button-spacing;
+}
+
+@mixin header-shadow {
+  @if ($color-header-background == $color-background) {
+    box-shadow: 0 1px 4px transparentize($color-border, 0.75);
+  }
+}
+
+@mixin grid-gutter($size) {
+  margin-right: -$size;
+  margin-left: -$size;
+
+  > * {
+    margin-right: $size;
+    margin-left: $size;
+  }
+}
+
+@mixin mobile-scrolling() {
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ! Font mixins
+
+@mixin capitalize($capitalize) {
+  @if $capitalize == true {
+    text-transform: uppercase;
+  }
+}
+
+
+@function capitalize_adjustment($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  @if $use_capitalize_adjustment {
+    @return $adjustment_amount;
+  } @else {
+    @return 0;
+  }
+}
+
+@mixin font-size-heading-large($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -3) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 2.125 * $font-heading-sizing + $adjustment); // 34px
+
+  @include media($bp-small) {
+    font-size: rem($font-size-base-mobile * 2.125 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-medium($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -3) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.875 * $font-heading-sizing + $adjustment); // 32px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.875 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-1($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -3) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.75 * $font-heading-sizing + $adjustment); // 28px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.75 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-2($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.625 * $font-heading-sizing + $adjustment); // 26px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.625 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-3($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount: -2);
+
+  font-size: rem($font-size-base * 1.5 * $font-heading-sizing + $adjustment); // 24px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.5 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-4($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.25 * $font-heading-sizing + $adjustment); // 20px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.25 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-5($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.125 + $adjustment); // 18px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.125 + $adjustment);
+  }
+}
+
+@mixin font-size-heading-6($use_capitalize_adjustment: $font-heading-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.125 + $adjustment); // 16px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.125 + $adjustment);
+  }
+}
+
+@mixin font-size-body-larger($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.375 + $adjustment); // 22px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.375 + $adjustment);
+  }
+}
+
+@mixin font-size-body-large($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.25 + $adjustment); // 20px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.25 + $adjustment);
+  }
+}
+
+@mixin font-size-body-medium($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.125 + $adjustment); // 18px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.125 + $adjustment);
+  }
+}
+
+@mixin font-size-body($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base + $adjustment); // 16px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile + $adjustment);
+  }
+}
+
+@mixin font-size-body-small($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 0.9375 + $adjustment); // 15px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 0.9375 + $adjustment);
+  }
+}
+
+@mixin font-size-body-smaller($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 0.875 + $adjustment); // 14px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 0.875 + $adjustment);
+  }
+}
+
+@mixin font-size-body-smallest($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 0.8125 + $adjustment); // 13px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 0.8125 + $adjustment);
+  }
+}
+
+@mixin font-size-body-tiny($use_capitalize_adjustment: false, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 0.75 + $adjustment); // 12px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 0.75 + $adjustment);
+  }
+}
+
+@mixin font-size-button-small($use_capitalize_adjustment: $font-button-capitalize, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 0.875 + $adjustment); // 14px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 0.875);
+  }
+}
+
+@mixin font-size-button-medium($use_capitalize_adjustment: $font-button-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base + $adjustment); // 16px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile + -1);
+  }
+}
+
+@mixin font-size-button-large($use_capitalize_adjustment: $font-button-capitalize, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.125 + $adjustment); // 18px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.125 + -1);
+  }
+}
+
+@mixin font-size-button-x-large($use_capitalize_adjustment: $font-button-capitalize, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.3125 + $adjustment); // 21px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.3125 + -1);
+  }
+}
+
+@mixin font-size-menu-large($use_capitalize_adjustment: false, $adjustment_amount: -2) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base * 1.0625 + $adjustment); // 17px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile * 1.0625 + -1);
+  }
+}
+
+@mixin font-size-menu($use_capitalize_adjustment: $font-menu-capitalize, $adjustment_amount: $capitalize_adjustment) {
+  $adjustment: capitalize_adjustment($use_capitalize_adjustment, $adjustment_amount);
+
+  font-size: rem($font-size-base + $adjustment); // 16px
+
+  @include media($bp-medium) {
+    font-size: rem($font-size-base-mobile + $adjustment);
+  }
+}
+
+@mixin font-size-input {
+  font-size: rem($font-size-base); // 16px
+
+  @include media($bp-medium) {
+    font-size: rem(16px); // Force 16px regardless of base size
+  }
+}
+
+// Typography
+
+%heading {
+  @include font($font-heading);
+  @include capitalize($font-heading-capitalize);
+  letter-spacing: $font-heading-spacing;
+
+  b,
+  strong {
+    font-weight: font-weight($font-heading, $font-weight: bolder);
+  }
+
+  em {
+    font-style: font-style($font-heading, $font-style: italic);
+  }
+
+  b em,
+  strong em,
+  em b,
+  em strong {
+    font-style: font-style($font-heading, $font-weight: bolder, $font-style: italic);
+  }
+}
+
+%h1 {
+  @extend %heading;
+  @include font-size-heading-1($font-heading-capitalize, -3);
+}
+
+%h2 {
+  @extend %heading;
+  @include font-size-heading-2($font-heading-capitalize, -2);
+}
+
+%h3 {
+  @extend %heading;
+  @include font-size-heading-3($font-heading-capitalize, -2);
+}
+
+%h4 {
+  @extend %heading;
+  @include font-size-heading-4($font-heading-capitalize, -2);
+}
+
+%h5 {
+  @extend %heading;
+  @include font-size-heading-5($font-heading-capitalize, -2);
+}
+
+%h6 {
+  @extend %heading;
+  @include font-size-heading-6($font-heading-capitalize, -2);
+}
+
+%menu {
+  @include font($font-menu);
+  @include font-size-body($font-menu-capitalize);
+  @include capitalize($font-menu-capitalize);
+  letter-spacing: $font-menu-spacing;
+}
+
+%section-heading {
+  @include font($font-section);
+  @include font-size-heading-4($font-section-capitalize);
+  text-transform: none;
+  @include capitalize($font-section-capitalize);
+  letter-spacing: $font-section-spacing;
+}
+
+%button-base {
+  @include button-size(small);
+  @include font($font-button);
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  transition:
+    background-color 0.2s ease,
+    width 0.2s ease,
+    height 0.2s ease;
+}
+
+%button-disable {
+  &,
+  &:active,
+  &:focus {
+    color: $color-button-text;
+    cursor: default;
+    background-color: $color-button-disable;
+    border: 1px solid $color-button-disable;
+  }
+}
+
+%button-primary {
+  @extend %button-base;
+  color: $color-button-text;
+  background-color: $color-button-background;
+  border: 1px solid $color-button-background;
+
+  &:not(.disabled):hover {
+    background: $color-button-background-hover;
+    border: 1px solid $color-button-background-hover;
+  }
+
+  &:active,
+  &:focus {
+    background: $color-button-background-focus;
+    border: 1px solid $color-button-background-focus;
+  }
+
+  &.disabled { @extend %button-disable; }
+}
+
+%button-secondary {
+  @extend %button-base;
+  color: $color-button-secondary-text;
+  background-color: $color-button-secondary-background;
+  border: 1px solid $color-button-secondary-border;
+
+  &:not(.disabled):hover {
+    background: $color-button-secondary-background-hover;
+    border: 1px solid $color-button-secondary-border-hover;
+  }
+
+  &.disabled { @extend %button-disable; }
+}
+
+// Layout
+
+%layout-container {
+  max-width: $max-width;
+  padding-right: $gutter-outer-small;
+  padding-left: $gutter-outer-small;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media($min: $bp-small) {
+    padding-right: $gutter-outer-medium;
+    padding-left: $gutter-outer-medium;
+  }
+
+  @include media($min: $bp-large) {
+    padding-right: $gutter-outer;
+    padding-left: $gutter-outer;
+  }
+}
+
+%layout-container--reset {
+  max-width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include media($min: $bp-large) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+%page-content {
+  margin-top: $gutter-content * 1.5;
+  margin-bottom: $gutter-content * 1.5;
+
+  @include media($min: $bp-large) {
+    margin-top: $gutter-content * 2.5;
+    margin-bottom: $gutter-content * 2.5;
+  }
+}
+
+%clearfix {
+  &::before,
+  &::after {
+    display: table;
+    content: "";
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+%link--text {
+  color: $color-text;
+  text-decoration: none;
+  transition: color 0.1s ease;
+
+  &:hover {
+    color: $color-link;
+  }
+}
+
+%link--default {
+  color: $color-link;
+  text-decoration: none;
+  transition: color 0.1s ease;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+%box-shadow {
+  border: 1px solid $color-box-shadow-border;
+  box-shadow: 0 1px 4px $color-box-shadow-shadow;
+}
+
+%inline-chevron {
+  display: inline-block;
+  margin-left: rem(5px);
+  vertical-align: middle;
+
+  svg {
+    display: block;
+    margin-top: rem(-2px);
+    transform: rotate(-90deg);
+    fill: currentColor;
+  }
+}
+
+%icon-checkbox {
+  display: inline-block;
+  width: nth($checkbox-size, 1);
+  height: nth($checkbox-size, 2);
+  color: $checkbox-inactive;
+  vertical-align: middle;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: $checkbox-inactive;
+    border: 1px solid $checkbox-border;
+    border-radius: 2px;
+    fill: currentColor;
+  }
+}
+
+%icon-checkbox--active {
+  color: $checkbox-active;
+
+  svg {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    fill: currentColor;
+  }
+}
+
+%button-reset {
+  @include font($font-body, $font-weight: bolder);
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: normal;
+     -moz-appearance: normal;
+          appearance: normal;
+}
+
+%atc-button {
+  position: relative;
+
+  .atc-button--text {
+    opacity: 1;
+  }
+
+  .atc-button--icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -13px;
+    margin-left: -13px;
+    opacity: 0;
+    visibility: hidden;
+    animation: rotate 0.6s linear infinite;
+    transition: opacity 0.1s ease 0.1s;
+
+    svg {
+      display: block;
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &.processing {
+    .atc-button--text {
+      opacity: 0;
+    }
+
+    .atc-button--icon {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+%search-button {
+  position: relative;
+
+  .search-icon--inactive,
+  .search-icon--active {
+    display: inline-block;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .search-icon--inactive {
+    width: 20px;
+    height: 21px;
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+
+  .search-icon--active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    margin-top: -13px;
+    margin-left: -13px;
+    opacity: 0;
+    visibility: hidden;
+    animation: rotate 0.7s cubic-bezier(0.69, 0.31, 0.56, 0.83) infinite;
+  }
+
+  &.search-icon--processing {
+    .search-icon--inactive {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+
+    .search-icon--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+%message--base {
+  @include font($font-body, $font-weight: bolder, $font-family: false);
+  @include font-size-body;
+
+  a {
+    color: currentColor;
+  }
+}
+
+%message--error {
+  @extend %message--base;
+  color: $color-error;
+  background-color: mix($color-error, $color-background, 18%);
+}
+
+%message--success {
+  @extend %message--base;
+  color: $color-success;
+  background-color: mix($color-success, $color-background, 18%);
+}
+
+%sneak-in {
+
+  &.animating,
+  &.visible:not(.animating) {
+    display: block;
+  }
+
+  &.visible:not(.animating) {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  &.animating-in {
+    animation-delay: 0s;
+    animation-duration: 0.27s;
+    animation-name: sneak-in;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-direction: normal;
+  }
+
+  &.animating-out {
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.12s cubic-bezier(1, 0, 0.7, 1);
+  }
+}
+
+%fade-in {
+  animation-delay: 0s;
+  animation-duration: 0.27s;
+  animation-name: fade-in;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-direction: normal;
+}
+
+%no-results--wrapper {
+  width: 100%;
+  margin-top: $space-xx-large;
+  text-align: center;
+
+  @include media($min: $bp-small) {
+    margin-top: $space-xx-large - $space-large;
+  }
+}
+
+%no-results--title {
+  @include font($font-body);
+  @include font-size-heading-4;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $color-heading;
+}
+
+%no-results--button {
+  @extend %button-primary;
+  @include button-size(medium);
+  margin-top: $space-medium;
+}
+
+// Buttons
+
+.button-primary {
+  @extend %button-primary;
+}
+
+.button-secondary {
+  @extend %button-secondary;
+}
+
+#messageus_button {
+  z-index:9999;
+}
+
+
+// Global styles
+html,
+body {
+  background-color: $color-background;
+}
+
+html {
+  height: 100%;
+
+  &::before {
+    display: none;
+    content: "XXXS,XXS,XS,S,M,L,XL,XXL,XXXL";
+  }
+
+  &::after {
+    display: none;
+    content: "XXXS";
+
+    @include media($min: $bp-xxs) {
+      content: "XXS";
+    }
+
+    @include media($min: $bp-xs) {
+      content: "XS";
+    }
+
+    @include media($min: $bp-small) {
+      content: "S";
+    }
+
+    @include media($min: $bp-medium) {
+      content: "M";
+    }
+
+    @include media($min: $bp-large) {
+      content: "L";
+    }
+
+    @include media($min: $bp-xl) {
+      content: "XL";
+    }
+
+    @include media($min: $bp-xxl) {
+      content: "XXL";
+    }
+
+    @include media($min: $bp-xxxl) {
+      content: "XXXL";
+    }
+  }
+}
+
+body {
+  @include font($font-body);
+  @include font-size-body;
+  width: 100%;
+  color: $color-text;
+
+  @include media($bp-small) {
+    @include font-size-body-small;
+  }
+
+  &.scroll-lock {
+    height: 100vh;
+    overflow: hidden;
+    touch-action: manipulation;
+  }
+}
+
+th,
+b,
+strong {
+  font-weight: font-weight($font-body, $font-weight: bolder);
+}
+
+em {
+  font-style: font-style($font-body, $font-style: italic);
+}
+
+th em,
+b em,
+strong em,
+em b,
+em strong {
+  font-style: font-style($font-body, $font-weight: bolder, $font-style: italic);
+}
+
+// Headings
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+h6 {
+  @extend %h6;
+}
+
+%show-for-sr,
+.visually-hidden {
+  //scss-lint:disable ImportantRule
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  border: 0;
+}
+
+.skip-to-main {
+  @include font-size-body;
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  color: $color-link;
+  background: $color-background;
+  text-decoration: none;
+  padding: 1em;
+
+  &:focus,
+  &:active {
+    left: 0;
+    z-index: 900;
+  }
+}
+
+
+/*================ #Giftcard Template ================*/
+
+.giftcard__apple-wallet-image {
+  display: block;
+  margin: 0 auto;
+}
+
+/*================ Print Giftcard Styles ================*/
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .giftcard__print-link,
+  .giftcard__apple-wallet {
+    display: none;
+  }
+}
+
+/*================ Custom Giftcard Styles ================*/
+
+.giftcard-header {
+  padding: $space-small $space-large;
+  color: $color-header-text;
+  background-color: $color-header-background;
+  text-align: center;
+}
+
+.giftcard-header-logo {
+  display: inline-block;
+  color: currentColor;
+  text-decoration: none;
+}
+
+.giftcard-header-logo-text {
+  @include font-size-body;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.giftcard--container {
+  @extend %layout-container;
+  max-width: 488px;
+  margin-bottom: $space-xxx-large;
+  text-align: center;
+}
+
+.giftcard-title {
+  margin-top: $space-x-large;
+  margin-bottom: $space-x-large;
+}
+
+.giftcard-message {
+  @extend %message--base;
+
+  &.message--error {
+    @extend %message--error;
+  }
+}
+
+.giftcard-qr {
+  width: 120px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.giftcard-actions {
+  margin-top: $space-medium;
+  font-size: 0;
+
+  .button-secondary {
+    margin-left: $gutter-content;
+  }
+}
+
+/*================ Gift Card image ================*/
+.giftcard-image {
+  position: relative;
+  text-align: center;
+
+  img {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    border-radius: 10px;
+    z-index: 2;
+  }
+
+  // White corner caps that overlap gift card image
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 47px; // asset width
+    height: 47px; // asset width
+    z-index: 3;
+  }
+
+  &::before {
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDdweCIgaGVpZ2h0PSI0N3B4IiB2aWV3Qm94PSIwIDAgNDcgNDciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ3IDQ3IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBvcGFjaXR5PSIwLjEiPgoJCTxwYXRoIGQ9Ik00NC41ODYsMUwxLDQ0LjU4NlYxMGMwLTQuOTYzLDQuMDM3LTksOS05SDQ0LjU4NiBNNDcsMEgxMEM0LjQ3NywwLDAsNC40NzcsMCwxMHYzN0w0NywwTDQ3LDB6Ii8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNNDQuNTg2LDFMMSw0NC41ODZWMTBjMC00Ljk2Myw0LjAzNy05LDktOUg0NC41ODYiLz4KCTwvZz4KPC9nPgo8L3N2Zz4K') 0 0 no-repeat;
+    top: -1px;
+    left: -1px;
+  }
+
+  &::after {
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDdweCIgaGVpZ2h0PSI0N3B4IiB2aWV3Qm94PSIwIDAgNDcgNDciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ3IDQ3IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBvcGFjaXR5PSIwLjEiPgoJCTxwYXRoIGQ9Ik0yLjQxNCw0Nkw0NiwyLjQxNFYzN2MwLDQuOTYzLTQuMDM3LDktOSw5SDIuNDE0IE0wLDQ3aDM3YzUuNTIzLDAsMTAtNC40NzcsMTAtMTBWMEwwLDQ3TDAsNDd6Ii8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMi40MTQsNDZMNDYsMi40MTRWMzdjMCw0Ljk2My00LjAzNyw5LTksOUgyLjQxNCIvPgoJPC9nPgo8L2c+Cjwvc3ZnPgo=') 0 0 no-repeat;
+    bottom: -1px;
+    right: -1px;
+  }
+}
+
+/*================ Gift card code ================*/
+.giftcard-code {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  z-index: 5;
+}
+
+.giftcard-code--medium {
+  font-size: 0.875em;
+}
+
+.giftcard-code--small {
+  font-size: 0.75em;
+}
+
+.giftcard-code--inner {
+  display: inline-block;
+  max-width: 450px;
+  padding: 0.5em;
+  vertical-align: baseline;
+  border-radius: 4px;
+}
+
+.giftcard-code-text {
+  @include font($font-body, $font-family: false);
+  display: inline-block;
+  padding: 0.4em 0.5em;
+  font-size: 1.875em;
+  line-height: 1;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  background-color: $color-white;
+  border: 1px dashed $color-border;
+
+  &.disabled {
+    text-decoration: line-through;
+  }
+}
+
+/*================ Gift card amount ================*/
+.giftcard-amount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2.75em;
+  line-height: 1.2;
+  padding: 10px;
+  z-index: 5;
+  color: $color-white;
+
+  strong {
+    display: block;
+  }
+}
+
+/*================ Tooltip ================*/
+.giftcard-tooltip {
+  display: block;
+  position: absolute;
+  top: -50%;
+  right: 50%;
+  margin-top: 16px;
+  z-index: 4;
+  text-align: center;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    margin-bottom: -5px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 5px solid $color-white;
+  }
+}
+
+.giftcard-tooltip-label {
+  @include font($font-body, $font-family: false);
+  position: relative;
+  right: -50%;
+  display: block;
+  min-height: 14px;
+  padding: 0.5em 0.75em;
+  margin-left: 0.25em;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  text-shadow: none;
+  background-color: $color-white;
+  border: 0;
+  border-radius: 4px;
+
+  small {
+    font-size: 0.875em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+/*================ Medium-down width ================*/
+@media screen and (max-width: 580px) {
+  .print-link {
+    display: none;
+  }
+}
+
+/*================ Small width ================*/
+@media screen and (max-width: 400px) {
+  .giftcard-image::before,
+  .giftcard-image::after {
+    display: none;
+  }
+
+  .giftcard-code {
+    font-size: 0.75em;
+  }
+
+  .giftcard-code--medium {
+    font-size: 0.65em;
+  }
+
+  .giftcard-code--small {
+    font-size: 0.55em;
+  }
+}
+
+
+/*============================================================================
+  #Print Styles
+==============================================================================*/
+
+@media print {
+  .giftcard-image::before,
+  .giftcard-image::after,
+  .giftcard-tooltip {
+    display: none;
+  }
+
+  .giftcard-actions {
+    display: none;
+  }
+}
+

@@ -1,0 +1,333 @@
+{% assign onboarding = false %}
+
+{% if section.settings.image == blank %}
+  {% assign onboarding = true %}
+{% endif %}
+
+{% comment %}
+  Assign content variable defaults
+{% endcomment %}
+{% assign title = section.settings.title %}
+{% assign text = section.settings.text %}
+{% assign button_text = section.settings.button_text %}
+{% comment %}
+  Loop thru blocks and if `text` matches the locale's code, update content variables
+  NOTE: `text` was used as an id rather than `iso_code` so that Shopify would use the code as the blocks title.
+    See https://shopify.dev/docs/themes/architecture/sections/section-schema#show-dynamic-block-titles-in-the-theme-editor
+{% endcomment %}
+{% for block in section.blocks %}
+  {% if block.settings.text == localization.country.iso_code %}
+    {% if block.settings.locale_title != blank %}
+      {% assign title = block.settings.locale_title %}
+    {% endif %}
+    {% if block.settings.locale_text != blank %}
+      {% assign text = block.settings.locale_text %}
+    {% endif %}
+    {% if block.settings.locale_button_text != blank %}
+      {% assign button_text = block.settings.locale_button_text %}
+    {% endif %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<section
+  class="
+    pxs-image-with-text
+    pxs-image-with-text-section-height-{{ section.settings.section_height }}
+  "
+>
+  <div class="pxs-image-with-text-wrapper">
+    <div
+      class="pxs-image-with-text-background"
+      {% if section.settings.image != blank %}
+        {% capture background_style %}
+          {% if section.settings.section_height == 'original' %}
+            padding-bottom: {{- 100 | divided_by: section.settings.image.aspect_ratio -}}%;
+          {% endif %}
+          background-position: {{ section.settings.position }};
+        {% endcapture %}
+
+        {%
+          include 'rimg',
+          img: section.settings.image,
+          size: '1400x',
+          crop: 'center',
+          style: background_style,
+          lazy: true,
+          background: true
+        %}
+      {% endif %}
+      >
+      {% if onboarding %}
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {% endif %}
+    </div>
+
+    {% if section.settings.overlay_opacity != 0 and section.settings.overlay_background != 'rgba(0,0,0,0)' %}
+      {% assign opacity = section.settings.overlay_opacity | times: 0.01 %}
+      {% assign overlay = section.settings.overlay_background | color_modify: 'alpha', opacity %}
+
+      <div
+        class="pxs-image-with-text-overlay"
+        style="background-color: {{ overlay }};"
+      ></div>
+    {% endif %}
+
+    <div
+      class="
+        pxs-image-with-text-content-wrapper
+        pxs-image-with-text-content-position-y-{{ section.settings.content_position | split: '-' | first }}
+        pxs-image-with-text-content-position-x-{{ section.settings.content_position | split: '-' | last }}
+      "
+    >
+        <div
+          class="pxs-image-with-text-content"
+          style="color: {{ section.settings.color }};"
+        >
+        {% if title != blank %}
+          <h2
+            class="pxs-image-with-text-heading"
+          >
+            {{ title | escape }}
+          </h2>
+        {% endif %}
+
+        {% if text != blank %}
+          <div
+            class="pxs-image-with-text-subheading rte"
+          >
+            {{ text }}
+          </div>
+        {% endif %}
+
+        {% if button_text != blank %}
+          <span class="pxs-image-with-text-button">
+            {{ button_text | escape }}
+          </span>
+        {% endif %}
+
+        {% if section.settings.link != blank %}
+          <a
+            class="pxs-image-with-text-link"
+            href="{{ section.settings.link }}"
+          ></a>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text overlay",
+  "class": "pxs-image-with-text-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_height",
+      "label": "Section height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "original",
+          "label": "Original aspect ratio"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "info": "Adjust the focal point of the image. Note: This setting will not have much of an impact if your background image's dimensions are roughly the same size as the section.",
+      "options": [
+        {
+          "label": "Top left",
+          "value": "top left"
+        },
+        {
+          "label": "Top center",
+          "value": "top center"
+        },
+        {
+          "label": "Top right",
+          "value": "top right"
+        },
+        {
+          "label": "Center left",
+          "value": "center left"
+        },
+        {
+          "label": "Center",
+          "value": "center center"
+        },
+        {
+          "label": "Center right",
+          "value": "center right"
+        },
+        {
+          "label": "Bottom left",
+          "value": "bottom left"
+        },
+        {
+          "label": "Bottom center",
+          "value": "bottom center"
+        },
+        {
+          "label": "Bottom right",
+          "value": "bottom right"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image with text overlay"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Say a bit about your brand, a specific product, or promotion.</p>"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "center-left",
+          "label": "Center left"
+        },
+        {
+          "value": "center-center",
+          "label": "Center center"
+        },
+        {
+          "value": "center-right",
+          "label": "Center right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "center-center"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_background",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Background color opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Button"
+    }
+  ],
+    "blocks": [
+    {
+      "type": "localized_content",
+      "name": "Localized Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Country ISO Code"
+        },
+        {
+          "type": "text",
+          "id": "locale_title",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "locale_text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "locale_button_text",
+          "label": "Button text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image with text overlay"
+    }
+  ]
+}
+
+{% endschema %}

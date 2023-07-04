@@ -1,0 +1,85 @@
+{% comment %}
+  @param product {Product}
+    The product object in question
+
+  @param selected_image {Image}
+    The current selected image in the gallery
+
+  @param hover_zoom {String}
+    This is the hover zoom setting, which is either 'disabled', 'separate', or 'replace'
+{% endcomment %}
+
+{% if product.images.size > 0 %}
+  {% assign thumb_dimensions = 'x47' %}
+  {% if settings.product_slideshow_style == 'cropped-short' %}
+    {% assign thumb_dimensions = '63x47' %}
+  {% elsif settings.product_slideshow_style == 'cropped-tall' %}
+    {% assign thumb_dimensions = '32x47' %}
+  {% elsif settings.product_slideshow_style == 'cropped-square' %}
+    {% assign thumb_dimensions = '47x47' %}
+  {% endif %}
+
+  {% if hover_zoom == 'separate' %}
+    <div class="product-gallery--zoomed-image" data-zoomed-image></div>
+  {% endif %}
+
+  <div
+    class="product-gallery--navigation loading"
+    data-product-slider-pagination
+  >
+    {% for image in product.images %}
+      {% assign is_video = false %}
+    
+    
+
+      {% if image.alt != blank %}
+        {% if image.alt contains 'vimeo' or image.alt contains 'youtube' %}
+          {% assign is_video = true %}
+        {% endif %}
+      {% endif %}
+    
+    {% comment %}
+    	Add to button class below to hide thumbnail if the image is a variant image
+    	{% if image.attached_to_variant? %}d-none{% endif %}
+    {% endcomment %}
+    
+      <button
+        class="
+          product-gallery--thumbnail-trigger
+         
+
+          {% if is_video %}product-gallery--thumbnail-video{% endif %}
+          {% if selected_image == image %}thumbnail--selected{% endif %}
+        "
+        data-product-thumbnail="{{ forloop.index0 }}"
+        type="button"
+        tab-index="0"
+        aria-label="{{ image.alt }} {{ 'general.accessibility.nav_product_thumbnail' | t }}"
+      >
+        <span class="product-gallery--thumbnail-span" tabindex="-1">
+          {% if is_video %}
+            {% include 'icon-library', id: 'icon-play' %}
+            {%
+              include 'rimg',
+              class: 'product-gallery--thumbnail',
+              img: image,
+              size: thumb_dimensions,
+              crop: 'center',
+              alt: 'Product video thumbnail',
+            %}
+            <div class="thumbnail-overlay"></div>
+          {% else %}
+            {%
+              include 'rimg',
+              class: 'product-gallery--thumbnail',
+              img: image,
+              size: thumb_dimensions,
+          	  lazy: true,
+              crop: 'center',
+            %}
+          {% endif %}
+        </span>
+      </button>
+    {% endfor %}
+  </div>
+{% endif %}

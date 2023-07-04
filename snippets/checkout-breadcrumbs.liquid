@@ -1,0 +1,120 @@
+{% if content_for_layout contains 'data-step="contact_information"' %}
+<ul class="bc">
+  <a href="/cart">
+    <li class="bc_item bc_complete">Cart</li>
+  </a>
+  <li class="bc_item bc_current">Information</li>
+  <li class="bc_item">Delivery</li>
+  <li class="bc_item">Payment</li>
+</ul>
+
+{% elsif content_for_layout contains 'data-step="shipping_method"' %}
+<ul class="bc">
+  <a href="/cart">
+    <li class="bc_item bc_complete">Cart</li>
+  </a> 
+  <a href="/cart/checkout?step=contact_information">
+    <li class="bc_item bc_complete">Information</li>
+  </a>
+  <li class="bc_item bc_current">Delivery</li>
+  <li class="bc_item">Payment</li>
+</ul>
+
+{% elsif content_for_layout contains 'data-step="payment_method"' %}
+<ul class="bc">
+  <a href="/cart">
+    <li class="bc_item bc_complete">Cart</li>
+  </a>
+  <a href="/cart/checkout?step=contact_information">
+    <li class="bc_item bc_complete">Information</li>
+  </a>
+  <a href="/cart/checkout?step=shipping_method">
+    <li class="bc_item bc_complete">Delivery</li>
+  </a>
+  <li class="bc_item bc_current">Payment</li>
+</ul>
+
+{% elsif content_for_layout contains 'data-step="review"' %}
+<ul class="bc">
+  <a href="/cart">
+    <li class="bc_item bc_complete">Cart</li>
+  </a>
+  <a href="/cart/checkout?step=contact_information">
+    <li class="bc_item bc_complete">Information</li>
+  </a>
+  <a href="/cart/checkout?step=shipping_method">
+    <li class="bc_item bc_complete">Delivery</li>
+  </a>
+  <a href="/cart/checkout?step=payment_method">
+    <li class="bc_item bc_complete">Payment</li>
+  </a>
+</ul>
+{% endif %}
+
+        
+{% style %}
+
+  .bc {
+    margin: 15px 10px 20px;
+    padding: 0px;
+    list-style-type: none;
+    counter-reset: breadcrumb;
+    position: relative;
+
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bc:before {
+    position: absolute;
+    top: 23px;
+    left: 0;
+	right: 0;
+    content: '';
+    width: 95%;
+    height: 1px;
+    background: #BCE3FD;
+  }
+  .bc .bc_item {
+    {% comment %} float: left; {% endcomment %}
+    padding-top: 60px;
+    {% comment %} width: 25%; {% endcomment %}
+    text-align: center;
+    position: relative;
+	color: #B6B6B6;
+  }
+  .bc .bc_item:after {
+    counter-increment: breadcrumb;
+    content: counter(breadcrumb);
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 23px);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid #BCE3FD;
+	color: #BCE3FD;
+    border-radius: 50%;
+    line-height: 40px;
+    background: #ffffff;
+  }
+  .bc .bc_current {
+	color: #306A90;
+  }
+  .bc .bc_current:after {
+	background: #ffffff;
+    border-color: #306A90;
+    color: #306A90;
+  }
+
+  .bc .bc_complete:after {
+	content: url("data:image/svg+xml,%3Csvg width='20' height='14' viewBox='0 0 20 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5814 0.410857C20.1395 0.957792 20.1395 1.84164 19.5814 2.38857L8.15224 13.5898C7.59417 14.1367 6.69234 14.1367 6.13427 13.5898L0.418416 7.98919C-0.139472 7.44225 -0.139472 6.5584 0.418416 6.01147C0.976394 5.46454 1.88091 5.46454 2.43898 6.01147L7.10308 10.6188L17.5635 0.410857C18.1215 -0.136952 19.0234 -0.136952 19.5814 0.410857Z' fill='%2323AF3A'/%3E%3C/svg%3E");
+    background: #DFF3E2;
+	border-color: #23AF3A;
+    color: #23AF3A;
+  }
+
+{% endstyle %}

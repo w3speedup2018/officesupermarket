@@ -1,0 +1,192 @@
+<script
+	type="application/json"
+	data-section-type="dynamic-cta-grid"
+	data-section-id="{{ section.id }}">
+</script>
+
+<style>
+	.cta-grid-container {
+		background-color: {{ section.settings.background_color }};
+	}
+
+	.cta-grid-block {
+		color: {{ section.settings.color }};
+	}
+</style>
+
+<div class="cta-grid-container">
+	<div class="cta-grid highlight-banners-count-{{ section.blocks.size }}">
+		{% if section.settings.title != blank %}
+			<div class="content">
+				<h1 class="section--title">{{section.settings.title}}</h1>
+				{% if section.settings.content != blank %}
+					<div class="rte">
+					{{ section.settings.content }}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="ctas">
+			{% for block in section.blocks %}
+
+				{% assign text = block.settings.text %}
+				{% assign title = block.settings.title %}
+				{% if block.type == 'cta_locale' and localization.country.iso_code == 'IE' %}
+					{% if block.settings.text_IE != blank %}
+						{% assign text = block.settings.text_IE %}
+					{% endif %}
+					{% if block.settings.title_IE != blank %}
+						{% assign title = block.settings.title_IE %}
+					{% endif %}
+				{% endif %}
+
+				{% if text != blank or title != blank %}
+					<div class="cta-grid-item">
+						<div class="cta-grid-text">
+							{% if title != blank %}
+								<h2 class="cta-grid-heading">{{ title | escape }}</h2>
+							{% endif %}
+
+							{% if text != blank %}
+								<p>{{ text }}</p>
+							{% endif %}
+							{% if block.settings.link != blank %}
+								<a
+									class="cta-grid-block-link button-primary"
+									href="{{ block.settings.link }}"
+									{{ block.shopify_attributes }}
+								>
+								Shop Now
+								</a>
+							{% endif %}
+						</div>
+						{% if block.settings.image != blank %}
+							<div class="cta-grid-image">
+								{%
+									include 'rimg',
+									class: 'cta-grid-custom-icon',
+									img: block.settings.image,
+									size: '273x179'
+									crop: 'center',
+								%}
+							</div>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "CTA Grid",
+	"class": "cta-grid--section",
+	"max_blocks": 4,
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading"
+		},
+		{
+			"type": "richtext",
+			"id": "content",
+			"label": "Content"
+		},
+		{
+			"id": "color",
+			"type": "color",
+			"label": "Text color",
+			"default": "#4d4d4d"
+		},
+		{
+			"id": "background_color",
+			"type": "color",
+			"label": "Background color",
+			"default": "#f8f8f8"
+		}
+	],
+	"blocks": [
+		{
+			"type": "cta",
+			"name": "CTA",
+			"settings": [
+				{
+					"id": "image",
+					"type": "image_picker",
+					"label": "Image",
+					"info": "50x50 recommended. Uploading an image will override any icon selected above."
+				},
+				{
+					"id": "title",
+					"type": "text",
+					"label": "Heading"
+				},
+				{
+					"id": "text",
+					"type": "text",
+					"label": "Text"
+				},
+				{
+					"id": "link",
+					"type": "url",
+					"label": "Link"
+				}
+			]
+		},
+		{
+			"type": "cta_locale",
+			"name": "CTA w/ Locale",
+			"settings": [
+				{
+					"id": "image",
+					"type": "image_picker",
+					"label": "Image",
+					"info": "50x50 recommended"
+				},
+				{
+					"id": "link",
+					"type": "url",
+					"label": "Link"
+				},
+				{
+					"type": "header",
+					"content": "Default Content"
+				},
+				{
+					"id": "title",
+					"type": "text",
+					"label": "Heading"
+				},
+				{
+					"id": "text",
+					"type": "text",
+					"label": "Text"
+				},
+				{
+					"type": "header",
+					"content": "IE Content"
+				},
+				{
+					"id": "title_IE",
+					"type": "text",
+					"label": "Heading (IE)"
+				},
+				{
+					"id": "text_IE",
+					"type": "text",
+					"label": "Text (IE)"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"category": "Advanced",
+			"name": "Grid CTAs"
+		}
+	]
+}
+
+{% endschema %}

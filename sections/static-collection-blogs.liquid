@@ -1,0 +1,47 @@
+
+{% stylesheet %}
+.collection-blogs .flickity-page-dots{
+	display: block;
+	position:relative;
+	bottom:0;
+	margin-top: 20px;
+}
+.collection-blogs-wrap {
+	overflow:hidden!important;
+}
+{% endstylesheet %}
+
+<p style="display:none">{{collection.url}}</p>
+
+{% if collection.url == '/collections/office-desks' %}
+    {% assign blog = blogs['desk-buyers-guides'] %}
+{% elsif collection.url == '/collections/office-chairs' %}
+    {% assign blog = blogs['office-chair-buyers-guides'] %}   
+{% elsif collection.url == '/collections/white-office-desks' %}
+    {% assign blog = blogs['white-office-desks-guide'] %}
+{% endif %}
+
+{% assign article_count = 3 %}
+
+
+{% if blog.articles_count > 0 %}
+
+<section class="collection-blogs blogposts--container blogposts--count-{{ article_count }}">
+    
+    <div class="collection-blogs-wrap">
+        <ul class="home-section--content carousel blogposts--inner" data-flickity='{ "cellAlign": "left" }' data-blog-posts>
+            {% for article in blog.articles %}
+                {%
+                    include 'article-excerpt',
+                    article: article,
+                    articleDate: true,
+                    articleExcerpt: true
+                %}
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+
+
+{% endif %}

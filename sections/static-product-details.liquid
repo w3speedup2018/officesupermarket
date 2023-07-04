@@ -1,0 +1,259 @@
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+
+
+<script>
+function openTab(evt, tabID) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].classList.remove("active");
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabID).className += " active";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+{% assign description = product.description | split: "<!-- split -->" %}
+{% assign main_desc = description[0] %}
+{% assign features = description[1] %}
+
+{% if features %}
+	<div class="product-section--container product-description">
+		{{main_desc}}
+	</div>
+{% endif %}
+<!-- Tab links -->
+<div class="product-content-nav">
+	<nav>
+		<button class="tablinks active" onclick="openTab(event, 'product-features')">Features</button>
+		<button class="tablinks" onclick="openTab(event, 'product-information')">Specifications</button>
+		<button class="tablinks" onclick="openTab(event, 'product-delivery')">Delivery</button>
+		<button class="tablinks" onclick="openTab(event, 'product-reviews')">Reviews</button>		
+	</nav>
+</div>
+
+<!-- Tab content -->
+<section class="product-section--container tabcontent active" id="product-features">
+	<div class="product-specification--container">
+		<h2>Product Features</h2>
+		<div class="product-features rte" data-product-features>
+			{% if features %}
+				{{ features }}
+			{% else %}
+				{{ main_desc}}
+			{% endif %}
+		</div>
+		
+	</div>
+</section>
+
+
+<section class="product-section--container tabcontent" id="product-information">
+  <div class="product-specification--container">
+    <h2>Product Specifications</h2>
+    <div class="information-table-wrap">
+      <table class="information-table">
+        <colgroup>
+          <col width="50%">
+          <col width="50%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>
+              <span>Technical Information</span>
+            </th>
+            <th>
+              <span>Details</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="information-product-name">Product Name</td>
+            <td data="{{ product.sku }}">{{ product.metafields["global"]["title"] }}</td>
+          </tr>
+          <tr>
+            <td>Assembly-Required</td>
+            <td>{{ product.metafields["global"]["Assembly-Required"] }}</td>
+          </tr>
+          <tr>
+            <td>Warranty</td>
+            <td>{{ product.metafields["global"]["Warranty"] }}</td>
+          </tr>
+          <tr>
+            <td>Delivery-Time</td>
+            <td>{{ product.metafields["global"]["Delivery-Time"] }}</td>
+          </tr>
+          {% for variant in product.variants %}
+          {% if product.selected_or_first_available_variant.id == variant.id %}
+         
+          {% comment %}
+          <tr id="stockLevel-row">
+            <td>Available From Stock</td>
+            <td id="stockLevel">{% if variant.inventory_quantity <= 0 %} Contact us for availability {% else %}{{ variant.inventory_quantity}}{% endif %}</td>
+          </tr>
+          {% endcomment %}
+          {% endif %}
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>                    
+    </div>
+    
+    {% capture 'meta_data' %}
+    {% for variant in product.variants %}
+      {{ variant.sku | json }} : {{ variant.metafields["global"] | json }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% endcapture %}
+    
+    {% capture 'stock_data' %}
+    {% for variant in product.variants %}
+      {{ variant.sku | json }} : {{ variant.inventory_quantity | json }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% endcapture %}
+
+    <script>
+      var metaData = { {{ meta_data }} }
+      var stockData = { {{ stock_data }} }
+    </script>
+    
+    <div id="specification-table-wrap">
+    {% for variant in product.variants %}
+      {% if product.selected_or_first_available_variant.id == variant.id %}
+          <table id="specification-table" class="information-table">
+            <colgroup>
+              <col width="50%">
+              <col width="50%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>
+                  <span>Technical Specification</span>
+                </th>
+                <th>
+                  <span>Details</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in variant.metafields["global"] %}
+              {% capture 'technical_details' %}
+              	{{item | last }}
+              {% endcapture %}
+                {% if technical_details contains 'N/A'  %}
+                	{%else %}
+              			<tr>
+                    		<td>{{ item | first }}</td>
+                    		<td>{{ technical_details }}</td>
+                  		</tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table> 
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% capture 'sku_data' %}
+  {% for variant in product.variants %}
+  	{{ variant.sku }}{% unless forloop.last %};{% endunless %}
+  {% endfor %}
+{% endcapture %}
+
+
+<section class="product-section--container tabcontent" id="product-delivery">
+ 	<div class="product-delivery--container">
+		<h2>Product Delivery Information</h2>
+		<div class="delivery-message-section"></div>
+		<p class="installation-message">
+      We appreciate that you may not have the time or the patience to build your brand new seating and furniture
+      so why not let us take the stress out of it for you. Our installation service starts from as little as
+      {% assign install_price_IE = shop.metaobjects.localized_strings.installation_price.string_IE %}
+      {% assign install_price_GB = shop.metaobjects.localized_strings.installation_price.string_GB %}
+      {% if localization.country.iso_code == 'IE' and install_price_IE != blank %}
+        {{ install_price_IE }}
+      {% elsif install_price_GB != blank %}
+        {{ install_price_GB }}
+      {% else %}
+        £60+VAT
+      {% endif %}
+      and can be scheduled for within 10 working days from your order date.
+      The service includes delivery to the room of your choice and then installed to plan, if you have one.
+      If you need us to help you create a floor plan then please speak to us about our free,
+      no obligation space planning service on 0344 755 3018
+    </p>
+	</div>
+</section>
+
+<section class="product-section--container tabcontent" id="product-reviews">
+<script type="lazyload2" data-src="https://widget.reviews.co.uk/product/dist.js"></script>
+
+
+<div class="product-review-section"></div>
+
+
+<script type="lazyload2">
+
+
+productWidget("product-reviews",{
+
+
+store: "office-supermarket",
+
+
+sku: " {{sku_data | strip_newlines}} " , 
+
+
+primaryClr: "#f47e27",
+
+
+neutralClr: "#EBEBEB",
+
+
+buttonClr: "#EEE",
+
+
+textClr: "#333",
+
+
+tabClr: "#eee",
+
+
+ratingStars: false,
+
+
+showAvatars: true,
+
+
+perPage: 10,
+
+enable_write_review: false
+
+
+});
+
+
+</script>
+</section>

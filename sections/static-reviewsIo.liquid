@@ -1,0 +1,46 @@
+<style>
+    .reviews-io-container{
+      background-color: {{ section.settings.background_color }};
+    }
+
+</style>
+
+<div class="reviews-io-container">
+	<div>
+		{{section.settings.reviews_io_widget}}
+	</div>
+</div>
+   
+
+
+{% schema %}
+{
+  "name": "Reviews io",
+  "class": "reviews-io-section",
+  "settings": [
+    {
+      "id": "background_color",
+      "type": "color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+	{
+      "id": "reviews_io_widget",
+      "type": "html",
+      "label": "Reviews IO Widget",
+	  "info": "Paste in the snippet from reviews io"      
+    }
+  ],
+  "presets": [
+    {
+      "category": "Advanced",
+      "name": "reviews IO Widget"
+    }
+  ]
+}
+
+{% endschema %}
+
+
+
+

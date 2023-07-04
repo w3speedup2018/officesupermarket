@@ -1,0 +1,157 @@
+<script
+  type="application/json"
+  data-section-type="static-product"
+  data-section-id="{{ section.id }}"
+  data-section-data
+>
+  {
+    "settings": {
+      "cart_redirection": {{ section.settings.product_cart_redirect | json }},
+      "layout": {{ section.settings.layout | json }},
+      "thumbnail_position": {{ settings.gallery_thumbnail_position | json }},
+      "money_format": {{ shop.money_format | strip_html | json }},
+      "hover_zoom": {{ section.settings.hover_zoom | json }},
+      "click_to_zoom": {{ section.settings.click_to_zoom | json }},
+      "enable_video_autoplay": {{ section.settings.enable_video_autoplay | json }},
+      "swatches_enable": {{ settings.swatches_enable | json }}
+    },
+    "context": {
+      "product_available": {{ 'product.buttons.add_to_cart' | t | json }},
+      "product_unavailable": {{ 'product.buttons.sold_out' | t | json }}
+    },
+    "product": {{ product | json }}
+  }
+</script>
+
+<section class="product--container {{ section.settings.layout }}" data-product-wrapper>
+  {%
+    include 'product',
+    layout: section.settings.layout,
+    is_product_modal: false,
+    click_to_zoom: section.settings.click_to_zoom,
+    hover_zoom: section.settings.hover_zoom,
+  %}
+</section>
+
+{% schema %}
+{
+  "name": "Product pages",
+  "class": "product--section",
+  "settings": [
+    {
+      "id": "layout",
+      "type": "select",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "layout--two-col",
+          "label": "2 columns"
+        },
+        {
+          "value": "layout--three-col",
+          "label": "3 columns"
+        }
+      ],
+      "default": "layout--three-col"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_autoplay",
+      "label": "Enable autoplay for product videos",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dcb",
+      "label": "Show dynamic checkout button",
+      "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_cart_redirect",
+      "label": "Enable cart redirection",
+      "info": "Automatically sends users to the Cart page after adding a product.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Image zoom"
+    },
+    {
+      "type": "paragraph",
+      "content": "For the best results, make sure your images are larger than 1600px."
+    },
+    {
+      "id": "hover_zoom",
+      "type": "select",
+      "label": "Roll-over zoom",
+      "options": [
+        {
+          "value": "disabled",
+          "label": "Disabled"
+        },
+        {
+          "value": "separate",
+          "label": "Enabled (separate box)"
+        },
+        {
+          "value": "replace",
+          "label": "Enabled (replace main image)"
+        }
+      ],
+      "default": "disabled",
+      "info": "Only applies to desktop screen sizes."
+    },
+    {
+      "id": "click_to_zoom",
+      "type": "select",
+      "label": "Click to zoom",
+      "options": [
+        {
+          "value": "disabled",
+          "label": "Disabled"
+        },
+        {
+          "value": "always",
+          "label": "Enabled"
+        },
+        {
+          "value": "desktop",
+          "label": "Enabled on desktop only"
+        },
+        {
+          "value": "mobile",
+          "label": "Enabled on mobile only"
+        }
+      ],
+      "default": "always",
+      "info": "Changes to \"Tap to zoom\" on mobile."
+    }
+  ]
+}
+
+{% endschema %}
+{%- assign review_rating = false -%}
+{% if product.metafields.spr.reviews %}
+  {% capture review_data %}{{ product.metafields.spr.reviews }}{% endcapture %}
+
+  {%- assign rating_keyword = '"ratingValue":' -%}
+  {%- assign rd_a1 = review_data | split: rating_keyword -%}
+  {%- assign rd_a2 = rd_a1[1] | split: "," -%}
+  {%- assign rd_a3 = rd_a2[0] | replace: '"', "" -%}
+  {%- assign review_rating = rd_a3 | plus: 1 | minus: 1 -%}
+
+  {%- assign count_keyword = '"reviewCount":' -%}
+  {%- assign rd_a1 = review_data | split: count_keyword -%}
+  {%- assign rd_a2 = rd_a1[1] | split: "," -%}
+  {%- assign rd_a3 = rd_a2[0] | replace: '"', "" -%}
+  {%- assign review_count = rd_a3 | plus: 1 | minus: 1 -%}
+{% endif %}
+
+{%- if review_rating %}
+  <div itemprop="aggregateRating" itemscope="" itemtype="https://schema.org/AggregateRating">
+    <meta itemprop="ratingValue" content="{{ review_rating }}">
+    <meta itemprop="reviewCount" content="{{ review_count }}">
+  </div>
+{%- endif -%}

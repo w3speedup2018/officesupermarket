@@ -1,24 +1,3 @@
-{% comment %}
-  Assign content variables
-{% endcomment %}
-{% assign title = block.settings.title %}
-{% assign text = block.settings.text %}
-{% assign button_text = block.settings.button_text %}
-{% comment %}
-  If locale is IE, replace with IE content
-{% endcomment %}
-{% if block.type == 'locale_promotion' and localization.country.iso_code == 'IE' %}
-  {% if block.settings.title_IE != blank %}
-    {% assign title = block.settings.title_IE %}
-  {% endif %}
-  {% if block.settings.text_IE != blank %}
-    {% assign text = block.settings.text_IE %}
-  {% endif %}
-  {% if block.settings.button_text_IE != blank %}
-    {% assign button_text = block.settings.button_text_IE %}
-  {% endif %}
-{% endif %}
-
 {% assign has_link = false %}
 {% if block.settings.block_link != blank %}
   {% assign has_link = true %}
@@ -33,7 +12,7 @@
 {%- endcapture -%}
 
 
-<{% if title != blank and text != blank %}article{% else %}div{% endif %}
+<{% if block.settings.title != blank and block.settings.text != blank %}article{% else %}div{% endif %}
   class="{{ classes | replace: '  ', ' ' | strip_newlines }}"
   {{ block.shopify_attributes }}
   {% if block.settings.image %}
@@ -79,23 +58,23 @@
   {% endif %}
 
   <div class="promo-block--content-wrapper">
-    {% if title != blank %}
+    {% if block.settings.title != blank %}
       <h2 class="promo-block--header">
-        {{ title | escape }}
+        {{ block.settings.title | escape }}
       </h2>
     {% endif %}
 
-    {% if text != blank %}
+    {% if block.settings.text != blank %}
       <p class="promo-block--text">
-        {{ text | escape }}
+        {{ block.settings.text | escape }}
       </p>
     {% endif %}
 
   </div>
   
-  {% if button_text != blank and block.settings.block_link != blank %}
+  {% if block.settings.button_text != blank and block.settings.block_link != blank %}
     <span class="button-{{ block.settings.button_style }} promo-block--button">
-      {{ button_text | escape }}
+      {{ block.settings.button_text | escape }}
     </span>
   {% endif %}
 
@@ -108,4 +87,4 @@
   {% else %}
     </div>
   {% endif %}
-</{% if title != blank and text != blank %}article{% else %}div{% endif %}>
+</{% if block.settings.title != blank and block.settings.text != blank %}article{% else %}div{% endif %}>

@@ -1,0 +1,19 @@
+<link rel="preload" href="https://fonts.shopifycdn.com/futura/futura_n6.bbe2e25d5b96d13ff36b242171a3d07cf5a60170.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=c28580d0b8e1b8bcc5222f1871acfd634d58fb31c3eeec0148fbb1e370776ac6" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+    font-family: Futura;
+    font-weight: 600;
+    font-style: normal;
+    src: url(https://fonts.shopifycdn.com/futura/futura_n6.bbe2e25d5b96d13ff36b242171a3d07cf5a60170.woff2?h1=b2ZmaWNlc3VwZXJtYXJrZXQuY28udWs&h2=b2ZmaWNlc3VwZXJtYXJrZXQuaWU&hmac=c28580d0b8e1b8bcc5222f1871acfd634d58fb31c3eeec0148fbb1e370776ac6) format("woff2");
+}
+</style>
+
+{% if template contains "index" %}
+	{% render "index-font-css" %}
+{% elsif template contains "collection" %}
+	{% render "collection-font-css" %}
+{% elsif template contains "product" %}
+	{% render "product-font-css" %}
+{% else %}
+	{% render "critical-font-css" %}
+{% endif %}

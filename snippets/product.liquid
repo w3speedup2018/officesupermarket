@@ -91,9 +91,9 @@
       {% endif %}
       
       
-      {% comment %}
-      <script src="https://widget.reviews.co.uk/rating-snippet/dist.js"></script>
-      <script>
+      
+      <script type="lazyload2" data-src="https://widget.reviews.co.uk/rating-snippet/dist.js"></script>
+      <script type="lazyload2">
         ratingSnippet("ruk_rating_snippet",{
           store: "office-supermarket",
           color: "#0E1311",
@@ -102,7 +102,7 @@
           text: "Reviews"
         });
       </script>
-      {% endcomment %}
+      
       
       <div class="ruk_rating_snippet" data-sku="{{ product.variants | map: 'sku' | join: ';' }};"></div>
       

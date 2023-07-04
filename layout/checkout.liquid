@@ -73,19 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="custom-usp__item">
 					<img src="{{ 'delivery-truck.png' | asset_img_url }}" />
 					<span class="custom-usp__item-title">Free Delivery</span>
-					<span>
-						On Orders<br/>
-						{% comment %}
-							Localize the free delivery threshold.
-							Ideally this could use the metaobject `Localized Strings`,
-							but Shopify doesn't seem to allow access to metaobjects in the checkout.
-						{% endcomment %}
-						{% if localization.country.iso_code == 'IE' %}
-							Over €250
-						{% else %}
-							Over £250
-						{% endif %}
-					</span>
+					<span>On Orders<br/>Over £250</span>
 				</div>
 				<div class="custom-usp__item">
 					<img src="{{ 'payment-card.png' | asset_img_url }}" />

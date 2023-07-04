@@ -187,23 +187,7 @@ function openTab(evt, tabID) {
  	<div class="product-delivery--container">
 		<h2>Product Delivery Information</h2>
 		<div class="delivery-message-section"></div>
-		<p class="installation-message">
-      We appreciate that you may not have the time or the patience to build your brand new seating and furniture
-      so why not let us take the stress out of it for you. Our installation service starts from as little as
-      {% assign install_price_IE = shop.metaobjects.localized_strings.installation_price.string_IE %}
-      {% assign install_price_GB = shop.metaobjects.localized_strings.installation_price.string_GB %}
-      {% if localization.country.iso_code == 'IE' and install_price_IE != blank %}
-        {{ install_price_IE }}
-      {% elsif install_price_GB != blank %}
-        {{ install_price_GB }}
-      {% else %}
-        £60+VAT
-      {% endif %}
-      and can be scheduled for within 10 working days from your order date.
-      The service includes delivery to the room of your choice and then installed to plan, if you have one.
-      If you need us to help you create a floor plan then please speak to us about our free,
-      no obligation space planning service on 0344 755 3018
-    </p>
+		<p class="installation-message">We appreciate that you may not have the time or the patience to build your brand new seating and furniture so why not let us take the stress out of it for you. Our installation service starts from as little as £60+VAT and can be scheduled for within 10 working days from your order date. The service includes delivery to the room of your choice and then installed to plan, if you have one. If you need us to help you create a floor plan then please speak to us about our free, no obligation space planning service on 0344 755 3018</p>
 	</div>
 </section>
 

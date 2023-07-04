@@ -108,13 +108,9 @@
 			<div class="cart-totals">
 				<div class="cart-shipping">
 					{% if cart.requires_shipping %}
-            {% if localization.country.iso_code == 'IE' %}
-					    {{ 'cart.general.shipping_at_checkout_IE' | t }}
-            {% else %}
-					    {{ 'cart.general.shipping_at_checkout' | t }}
-            {% endif %}
+					{{ 'cart.general.shipping_at_checkout' | t }}
 					{% else %}
-					  {{ 'cart.general.taxes_at_checkout' | t }}
+					{{ 'cart.general.taxes_at_checkout' | t }}
 					{% endif %}
 
 					{% comment %}

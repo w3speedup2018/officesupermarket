@@ -1,131 +1,83 @@
 <script
-	type="application/json"
-	data-section-type="static-featured-header"
-	data-section-id="{{ section.id }}">
+  type="application/json"
+  data-section-type="static-featured-header"
+  data-section-id="{{ section.id }}">
 </script>
 
 {% if section.settings.show_featured_header %}
-	{% comment %}
-		Assign content variable defaults
-	{% endcomment %}
-	{% assign image_left = section.settings.image_left %}
-	{% assign image_right = section.settings.image_right %}
-	{% assign image_right_desktop = section.settings.image_right_desktop %}
-	{% comment %}
-		Loop thru blocks and if `text` matches the locale's code, update content variables
-		NOTE: `text` was used as an id rather than `iso_code` so that Shopify would use the code as the blocks title.
-			See https://shopify.dev/docs/themes/architecture/sections/section-schema#show-dynamic-block-titles-in-the-theme-editor
-	{% endcomment %}
-	{% for block in section.blocks %}
-		{% if block.settings.text == localization.country.iso_code %}
-			{% assign image_left = block.settings.locale_image_left %}
-			{% assign image_right = block.settings.locale_image_right %}
-			{% assign image_right_desktop = block.settings.locale_image_right_desktop %}
-			{% break %}
-		{% endif %}
-	{% endfor %}
-
-	<div class="featured-header-container">
-		<div class="featured-header">
-			<div class="img-left">
-				{% if section.settings.image_left_link %}
-					<a href="{{section.settings.image_left_link}}">
+  <div class="featured-header-container">
+    <div class="featured-header">
+		<div class="img-left">
+			{% if section.settings.image_left_link %}
+			<a href="{{section.settings.image_left_link}}">
+			{% endif %}
+				{% if section.settings.image_left %}
+				{%
+					include 'rimg',
+					img: section.settings.image_left,
+					size: '436x',
+				%}
 				{% endif %}
-				{% if image_left %}
-					{%
-						include 'rimg',
-						img: image_left,
-						size: '436x',
-					%}
-				{% endif %}
-				{% if section.settings.image_left_link %}
-					</a>
-				{% endif %}
-			</div>
-			<div class="img-right">
-				{% if section.settings.image_right_link %}
-					<a href="{{section.settings.image_right_link}}">
-				{% endif %}
+			{% if section.settings.image_left_link %}
+			</a>
+			{% endif %}
+		</div>
+		<div class="img-right">
+			{% if section.settings.image_right_link %}
+			<a href="{{section.settings.image_right_link}}">
+			{% endif %}
 				<div class="desktop">
-					<img src="{{ image_right_desktop | img_url: '896x436', crop: crop }}"/>
+					<img src="{{ section.settings.image_right_desktop | img_url: '896x436', crop: crop }}"/>
 				</div>
 				<div class="mobile">
-					<img src="{{ image_right | img_url: '436x436', crop: crop }}"/>
+					<img src="{{ section.settings.image_right | img_url: '436x436', crop: crop }}"/>
 				</div>
-				{% if section.settings.image_right_link %}
-					</a>
-				{% endif %}
-			</div>
+			{% if section.settings.image_right_link %}
+			</a>
+			{% endif %}
 		</div>
-	</div>
+    </div>
+  </div>
 {% endif %}
 
 
 {% schema %}
 {
-	"name": "Featured Header",
-	"class": "featured-header--section",
-	"settings": [
-		{
-			"id": "show_featured_header",
-			"type": "checkbox",
-			"label": "Enable featured header",
-			"default": true
-		},
-		{
-			"id": "image_left",
-			"type": "image_picker",
-			"label": "image left"
-		},
-		{
-			"id": "image_left_link",
-			"type": "url",
-			"label": "image left link"
-		},
-		{
-			"id": "image_right_desktop",
-			"type": "image_picker",
-			"label": "image right desktop"
-		},
-		{
-			"id": "image_right",
-			"type": "image_picker",
-			"label": "image right mobile"
-		},
-		{
-			"id": "image_right_link",
-			"type": "url",
-			"label": "image right link"
-		}
-	],
-	"blocks": [
-		{
-			"type": "localized_content",
-			"name": "Localized Content",
-			"settings": [
-				{
-					"id": "text",
-					"type": "text",
-					"label": "Country ISO Code"
-				},
-				{
-					"id": "locale_image_left",
-					"type": "image_picker",
-					"label": "Image Left"
-				},
-				{
-					"id": "locale_image_right_desktop",
-					"type": "image_picker",
-					"label": "Image Right (Desktop)"
-				},
-				{
-					"id": "locale_image_right",
-					"type": "image_picker",
-					"label": "Image Right (Mobile)"
-				}
-			]
-		}
-	]
+  "name": "Featured Header",
+  "class": "featured-header--section",
+  "settings": [
+    {
+      "id": "show_featured_header",
+      "type": "checkbox",
+      "label": "Enable featured header",
+      "default": true
+    },
+	{
+      "id": "image_left",
+      "type": "image_picker",
+      "label": "image left"
+    },
+	{
+      "id": "image_left_link",
+      "type": "url",
+      "label": "image left link"
+    },
+	{
+      "id": "image_right_desktop",
+      "type": "image_picker",
+      "label": "image right desktop"
+    },	
+	{
+      "id": "image_right",
+      "type": "image_picker",
+      "label": "image right mobile"
+    },
+	{
+      "id": "image_right_link",
+      "type": "url",
+      "label": "image right link"
+    }
+  ]
 }
 
 {% endschema %}

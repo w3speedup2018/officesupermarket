@@ -18,47 +18,21 @@
 
   </style>
 
-{% comment %}
-  Assign content variable defaults
-{% endcomment %}
-{% assign title = section.settings.title %}
-{% assign sub_title = section.settings.sub_title %}
-{% assign button_text = section.settings.button_text %}
-{% comment %}
-  Loop thru blocks and if `text` matches the locale's code, update content variables
-  NOTE: `text` was used as an id rather than `iso_code` so that Shopify would use the code as the blocks title.
-    See https://shopify.dev/docs/themes/architecture/sections/section-schema#show-dynamic-block-titles-in-the-theme-editor
-{% endcomment %}
-{% for block in section.blocks %}
-  {% if block.settings.text == localization.country.iso_code %}
-    {% if block.settings.locale_title != blank %}
-      {% assign title = block.settings.locale_title %}
-    {% endif %}
-    {% if block.settings.locale_sub_title != blank %}
-      {% assign sub_title = block.settings.locale_sub_title %}
-    {% endif %}
-    {% if block.settings.locale_button_text != blank %}
-      {% assign button_text = block.settings.locale_button_text %}
-    {% endif %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-
 
 <section class="large-cta-banner--container">
 	
 		<div class="large-cta-banner--wrap">
 			<div class="large-cta-banner--content">
-				{% if title != blank %}
+				{% if section.settings.title != blank %}
 					<h2 class="section--title">
-						{{title}}
-					{% if sub_title != blank %}
-						<span>{{ sub_title | escape }}</span>
+						{{section.settings.title}}
+					{% if section.settings.sub_title != blank %}
+						<span>{{ section.settings.sub_title | escape }}</span>
 					{% endif %}
 					</h2>
 				{% endif %}
-				{% if button_text != blank and section.settings.button_link != blank %}
-					<a href="{{section.settings.button_link}}" class="button">{{ button_text | escape }}</a>
+				{% if section.settings.button_text != blank and section.settings.button_link != blank %}
+					<a href="{{section.settings.button_link}}" class="button">{{ section.settings.button_text | escape }}</a>
 				{% endif %}
 			</div>
 			<div class="large-cta-banner--image">
@@ -86,41 +60,41 @@
       "label": "Heading",
       "default": "The Office Wellbeing Experts"
     },
-    {
+	{
       "id": "title_color",
       "type": "color",
       "label": "Title colour",
       "default": "#ffffff"
     },
-    {
+	{
       "type": "text",
       "id": "sub_title",
       "label": "Sub Title",
       "default": "Experts"
     },
-    {
+	{
       "id": "sub_title_color",
       "type": "color",
       "label": "Sub Title colour",
       "default": "#C2DA9B"
     },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button text"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Link"
-    },
-	  {
+	{
+		"type": "text",
+		"id": "button_text",
+		"label": "Button text"
+	},
+	{
+		"type": "url",
+		"id": "button_link",
+		"label": "Link"
+	},
+	{
       "id": "background_color",
       "type": "color",
       "label": "Background color",
       "default": "#284634"
     },
-	  {
+	{
       "type": "image_picker",
       "id": "image",
       "label": "Image"
@@ -169,34 +143,6 @@
         }
       ],
       "default": "center center"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "localized_content",
-      "name": "Localized Content",
-      "settings": [
-        {
-          "id": "text",
-          "type": "text",
-          "label": "Country ISO Code"
-        },
-        {
-          "type": "text",
-          "id": "locale_title",
-          "label": "Heading"
-        },
-        {
-          "type": "text",
-          "id": "locale_sub_title",
-          "label": "Sub Title"
-        },
-        {
-          "type": "text",
-          "id": "locale_button_text",
-          "label": "Button text"
-        }
-      ]
     }
   ],
   "presets": [

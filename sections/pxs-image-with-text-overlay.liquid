@@ -4,32 +4,6 @@
   {% assign onboarding = true %}
 {% endif %}
 
-{% comment %}
-  Assign content variable defaults
-{% endcomment %}
-{% assign title = section.settings.title %}
-{% assign text = section.settings.text %}
-{% assign button_text = section.settings.button_text %}
-{% comment %}
-  Loop thru blocks and if `text` matches the locale's code, update content variables
-  NOTE: `text` was used as an id rather than `iso_code` so that Shopify would use the code as the blocks title.
-    See https://shopify.dev/docs/themes/architecture/sections/section-schema#show-dynamic-block-titles-in-the-theme-editor
-{% endcomment %}
-{% for block in section.blocks %}
-  {% if block.settings.text == localization.country.iso_code %}
-    {% if block.settings.locale_title != blank %}
-      {% assign title = block.settings.locale_title %}
-    {% endif %}
-    {% if block.settings.locale_text != blank %}
-      {% assign text = block.settings.locale_text %}
-    {% endif %}
-    {% if block.settings.locale_button_text != blank %}
-      {% assign button_text = block.settings.locale_button_text %}
-    {% endif %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-
 <section
   class="
     pxs-image-with-text
@@ -84,25 +58,25 @@
           class="pxs-image-with-text-content"
           style="color: {{ section.settings.color }};"
         >
-        {% if title != blank %}
+        {% if section.settings.title != blank %}
           <h2
             class="pxs-image-with-text-heading"
           >
-            {{ title | escape }}
+            {{ section.settings.title | escape }}
           </h2>
         {% endif %}
 
-        {% if text != blank %}
+        {% if section.settings.text != blank %}
           <div
             class="pxs-image-with-text-subheading rte"
           >
-            {{ text }}
+            {{ section.settings.text }}
           </div>
         {% endif %}
 
-        {% if button_text != blank %}
+        {% if section.settings.button_text != blank %}
           <span class="pxs-image-with-text-button">
-            {{ button_text | escape }}
+            {{ section.settings.button_text | escape }}
           </span>
         {% endif %}
 
@@ -292,34 +266,6 @@
       "id": "button_text",
       "label": "Button text",
       "default": "Button"
-    }
-  ],
-    "blocks": [
-    {
-      "type": "localized_content",
-      "name": "Localized Content",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Country ISO Code"
-        },
-        {
-          "type": "text",
-          "id": "locale_title",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "locale_text",
-          "label": "Text"
-        },
-        {
-          "type": "text",
-          "id": "locale_button_text",
-          "label": "Button text"
-        }
-      ]
     }
   ],
   "presets": [

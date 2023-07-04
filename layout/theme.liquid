@@ -1,6 +1,9 @@
 <!doctype html>
 <html class="no-js no-touch" lang="{{ shop.locale }}">
     <head>
+        {%- render 'theme-css' -%}
+        {%- render 'theme-css2' -%}
+        {%- render 'font-css' -%}
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
         <link rel="preconnect" href="https://cdn.shopify.com">
@@ -16,17 +19,15 @@
         <link rel="preconnect" href="https://connect.facebook.net">
         <link rel="preconnect" href="https://widget.reviews.io">
 		<link rel="preconnect" href="https://widget.reviews.co.uk">
-        {% if template == 'index' %}
-            <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
-            <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
-        {% endif %}
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WJJF4QG');</script>
-<!-- End Google Tag Manager -->
+      
+          <!-- Google Tag Manager -->
+        <script type="lazyload2">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WJJF4QG');</script>
+        <!-- End Google Tag Manager -->
+      
         <title>
         {{- page_title -}}
 
@@ -86,13 +87,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preload" as="style" href="{{ 'theme.scss.css' | asset_url }}">
         {% endcomment %}
 
-		{%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
-			{{ content_for_header }}
-		{%- else -%}
-			{% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
-			{{ content_for_header2 | replace: ' defer="defer" ', ' type="lazyload2" ' | replace: " src=", " data-src=" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('wnw_load', asyncLoad, false);" | replace: "DOMContentLoaded", "DOMContentLoaded2" }}
-            <script>var trekkie=[];trekkie.integrations=!0;</script>
-		{%- endif -%}
+    	{%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+        	{{ content_for_header }}
+        {%- else -%}
+        	{% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
+        	{{ content_for_header2 | replace: ' defer="defer" ', ' type="lazyload2" ' | replace: " src=", " data-src=" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('wnw_load', asyncLoad, false);" | replace: "DOMContentLoaded", "DOMContentLoaded2" | replace: "addEventListener('load', prefetchAssets);", "addEventListener('wnw_load', prefetchAssets);" }}
+        	<script>var trekkie=[];trekkie.integrations=!0;window.BOOMR={},window.BOOMR.version=true;</script>
+        {%- endif -%}
 
         <script>
             document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -102,7 +103,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {% comment %} {% render 'theme-scss-css' %}
       	{% render 'theme-scss-css-2' %} 
         <link rel="stylesheet" data-href="{{ 'theme.scss.css' | asset_url }}"> {% endcomment %}
-		{{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+		<link rel="stylesheet" data-href="{{ 'theme.scss.css' | asset_url }}">
         <link rel="stylesheet" data-href="https://checkoutbundles.com/shopify/app/preview_style.css"> 
         {% include 'rfq_script' %}
         <script type="lazyload2" data-src="{{ 'flagBs.js' | asset_url }}"></script>
@@ -127,34 +128,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {% comment %} <link rel="stylesheet" data-href="{{ 'custom.css' | asset_url }}">       	 {% endcomment %}
       	<style>.product-gallery--image img[data-rimg=lazy],.product-gallery--image img[data-rimg=loading],img[data-rimg=lazy].slideshow-image,img[data-rimg=loading].slideshow-image{opacity:1!important}[data-rimg-canvas]{display:none!important}</style>
 		<style class="critical2"></style>      	
-      <!-- Global site tag (gtag.js) - Google Ads: 794881497 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-794881497"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+       <!-- Global site tag (gtag.js) - Google Ads: 794881497 -->
+      <script type="lazyload2" data-src="https://www.googletagmanager.com/gtag/js?id=AW-794881497"></script>
+      <script type="lazyload2">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'AW-794881497', {'allow_enhanced_conversions': true});
+      </script>
+      
+      <script type="lazyload2">
+          (function(w,d,t,r,u)
+          {
+              var f,n,i;
+              w[u]=w[u]||[],f=function()
+              {
+                  var o={ti:"142001440", enableAutoSpaTracking: true};
+                  o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+              },
+              n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+              {
+                  var s=this.readyState;
+                  s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+              },
+              i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+          })
+          (window,document,"script","//bat.bing.com/bat.js","uetq");
+      </script>
+    <script id='fm-cart-token-script'>  function getCartToken() {
+    let idx = document.cookie.indexOf('cart=');
+    if (idx == -1) {
+        return null;
+    }
+    
+        let end = document.cookie.indexOf(';', idx);
+        return document.cookie.substring(idx + 5, end);
+    }
 
-  gtag('config', 'AW-794881497', {'allow_enhanced_conversions': true});
-</script>
-<script>
-    (function(w,d,t,r,u)
-    {
-        var f,n,i;
-        w[u]=w[u]||[],f=function()
-        {
-            var o={ti:"142001440", enableAutoSpaTracking: true};
-            o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
-        },
-        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
-        {
-            var s=this.readyState;
-            s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
-        },
-        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
-    })
-    (window,document,"script","//bat.bing.com/bat.js","uetq");
-</script>
-    </head>
+      var shopifyCartEvent = {{ cart | json }};
+
+
+    {% for cartItem in cart.items  %}
+        {%- assign myProduct = cartItem.product -%}
+        var myProductRef={{myProduct|json}}
+       {%- assign myProductCollections = myProduct.collections -%}
+       var myProductCollectionsRef={{myProductCollections|json}}
+    
+        for(let i=0;i<shopifyCartEvent.items.length;i++){
+            if(shopifyCartEvent.items[i].product_id===myProductRef.id){
+    
+            let collList=[]
+            for(let j=0;j<myProductCollectionsRef.length;j++){
+              collList.push(myProductCollectionsRef[j].title)
+            }
+            shopifyCartEvent.items[i].collections=collList
+            
+           }
+       }
+      
+    {% endfor %}
+
+
+
+{% if customer %}
+shopifyCartEvent.customer = {
+    id: '{{ customer.id }}',
+    'name': '{{ customer.name }}',
+    'email': '{{ customer.email }}',
+    'mobile': '{{ customer.phone }}',
+    'first_name': '{{ customer.first_name }}',
+    'last_name': '{{ customer.last_name }}',
+    'total_orders': {{ customer.orders_count }},
+    'last_order': '{{ customer.last_order }}',
+    'total_spent': {{ customer.total_spent }},
+    'address_list': {{ customer.addresses | json }},
+    'accepts_marketing': {{ customer.accepts_marketing }}
+  }
+{% endif %}
+
+var tId = "";
+tId = setInterval(function () {
+    try {
+        shopifyCartEvent.token = getCartToken();
+        FM.trackMasEvent("shopify.added_product_to_cart", true, shopifyCartEvent);
+        clearInterval(tId);
+    } catch (err) {
+        console.error("FM not loaded yet", err);
+    }
+}, 300);</script>
+    {%- render 'custom-css' -%}
+</head>
 
   <body class="template-{{ template.name }}" data-instant-allow-query-string>
       <!-- Google Tag Manager (noscript) -->
@@ -169,11 +233,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <main id="site-main" class="site-main" aria-label="Main content" tabindex="-1">
             {% if template == 'index' %}
 				{% section 'static-featured-header' %}
-                {% section 'static-featured-header-slider' %}
                 {% section 'static-slideshow' %}
                 {% section 'static-highlights-banners' %}
             {% endif %}
-            {{ content_for_layout }}
+            
+            {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+            	{{ content_for_layout }}
+            {%- else -%}
+            	{% capture content_for_layout2 %}{{ content_for_layout }}{% endcapture %}
+            	{{ content_for_layout2 | replace: '<link rel="stylesheet" href="', '<link rel="stylesheet" data-href="' | replace: '<script src="', '<script type="lazyload2" data-src="'  }}
+            {%- endif -%}
+            
         </main>
 
         {% section 'static-footer' %}
@@ -212,7 +282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
         {% include 'structured-data' %}
 
-        <script>
+        <script >
         (function () {
         function handleFirstTab(e) {
             if (e.keyCode === 9) { // the "I am a keyboard user" key
@@ -249,10 +319,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script>
             window.cffPCLiquidPlaced = true
         </script>
-        <script src="https://widget.reviews.co.uk/product/dist.js"></script>
-        <script src="https://widget.reviews.co.uk/rating-snippet/dist.js"></script>
-        <link rel="stylesheet" href="https://widget.reviews.co.uk/rating-snippet/dist.css" />
-        <script>
+        <script type="lazyload2" data-src="https://widget.reviews.co.uk/product/dist.js"></script>
+        <script type="lazyload2" data-src="https://widget.reviews.co.uk/rating-snippet/dist.js"></script>
+        <link rel="stylesheet" data-href="https://widget.reviews.co.uk/rating-snippet/dist.css" />
+        <script type="lazyload2">
         ratingSnippet("ruk_rating_snippet",{
         store: "office-supermarket",
         color: "#10D577",
@@ -262,8 +332,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </script>
         <!--EndCFFPersistentCartCart--><script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} window.KlarnaThemeGlobals.data_purchase_amount={{product.first_available_variant.price}};window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
         {% render 'quantity-breaks-now', customer: customer, template: template, product: product, cart: cart %}
-        {{ 'wnw-optimization.js' | asset_url | script_tag }}
-     {% include 'smile-initializer' %}
-
+    
+        {{ 'wnw-optimization-3.0.js' | asset_url | script_tag }}
+        {% include 'smile-initializer' %}
 </body>
 </html>
